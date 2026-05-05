@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | CRCIV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --accent-color: #007bff;
+            --bg-light: #f8f9fa;
+            --text-main: #333;
+            --text-muted: #6c757d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', 'Noto Sans KR', sans-serif; color: var(--text-main); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+
+        header {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        .logo span { color: var(--accent-color); }
+        nav ul { display: flex; gap: 2rem; }
+        nav a { font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { color: var(--accent-color); }
+        
+        main { margin-top: 80px; padding: 3rem 10%; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+        .subtitle { color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-info {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            min-width: 30px;
+            text-align: center;
+            margin-top: 0.2rem;
+        }
+
+        .info-item h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .info-item a {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .info-item a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-form h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        .location-map {
+            margin-top: 3rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .location-map h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            color: #ccc;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: #ccc;
+            padding: 3rem 10%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        footer a { color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CRC<span>IV</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contact Us</h1>
+        <p class="subtitle">CRCIV에 연락해주세요. 협업 및 문의 사항을 환영합니다.</p>
+
+        <div class="contact-container">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Incheon National University<br>Academy-ro 119, Yeonsu-gu<br>Incheon 22012, Republic of Korea</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+82328350000">+82-32-835-0000</a></p>
+                        <p style="font-size: 0.85rem; color: #999;">Office hours: Mon-Fri 9AM-6PM (KST)</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:kwon@inu.ac.kr">kwon@inu.ac.kr</a></p>
+                        <p style="font-size: 0.85rem; color: #999;">General inquiries</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-university"></i>
+                    <div>
+                        <h3>Affiliation</h3>
+                        <p>Incheon National University<br>Department of Biology<br>School of Science</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <h3>Research Focus</h3>
+                        <p>Insect Chemosensory Biology<br>Disease Vector Control<br>Comparative Genomics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="location-map">
+            <h2 style="margin-top: 3rem; margin-bottom: 1rem;">Our Location</h2>
+            <div class="map-placeholder">
+                <i class="fas fa-map"></i>
+            </div>
+            <p style="text-align: center; color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+                Interactive map will be embedded here. Incheon National University Campus, Yeonsu-gu, Incheon
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
+        <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
+        <p>&copy; 2026 CRCIV. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

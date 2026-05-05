@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team | CRCIV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --accent-color: #007bff;
+            --bg-light: #f8f9fa;
+            --text-main: #333;
+            --text-muted: #6c757d;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', 'Noto Sans KR', sans-serif; color: var(--text-main); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+
+        header {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        .logo span { color: var(--accent-color); }
+        nav ul { display: flex; gap: 2rem; }
+        nav a { font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { color: var(--accent-color); }
+        
+        main { margin-top: 80px; padding: 3rem 10%; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+        .subtitle { color: var(--text-muted); margin-bottom: 2rem; }
+        
+        section { margin-bottom: 3rem; }
+        section h2 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 2rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; }
+        
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .member-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .member-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+        }
+        
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .member-title {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-bio {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: #ccc;
+            padding: 3rem 10%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        footer a { color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CRC<span>IV</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#research">Research</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Our Team</h1>
+        <p class="subtitle">CRCIV의 연구팀을 만나보세요</p>
+
+        <section>
+            <h2>Leadership</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">권형욱 (Hyung Wook Kwon)</div>
+                        <div class="member-title">Director & Professor</div>
+                        <div class="member-bio">
+                            곤충 감각생리 및 비교 게노믹스 전문가<br>
+                            인천대학교 생물학 교수
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Research Team</h2>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="member-image">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Post-Doctoral Researchers</div>
+                        <div class="member-title">연구원</div>
+                        <div class="member-bio">
+                            곤충 맛 수용체 및 매개체 제어<br>
+                            분자 생물학 및 유전체 연구
+                        </div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Graduate Students</div>
+                        <div class="member-title">대학원생</div>
+                        <div class="member-bio">
+                            M.S. & Ph.D. 과정 학생<br>
+                            곤충 신경생물학 연구
+                        </div>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Undergraduate Researchers</div>
+                        <div class="member-title">학부생</div>
+                        <div class="member-bio">
+                            학부 인턴십 프로그램<br>
+                            생물정보학 및 실험실 기술
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Research Specialization</h2>
+            <div style="background: var(--bg-light); padding: 2rem; border-radius: 10px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">
+                            <i class="fas fa-tongue"></i> Insect Taste Receptors
+                        </h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">
+                            Functional characterization of gustatory receptors in Apis mellifera, Apis cerana, and disease vectors.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">
+                            <i class="fas fa-virus"></i> Vector Control
+                        </h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">
+                            Mosquito host-seeking and blood-feeding behavior studies for disease control.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">
+                            <i class="fas fa-dna"></i> Comparative Genomics
+                        </h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">
+                            Genome sequencing and comparative analysis across insect species.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">
+                            <i class="fas fa-nose"></i> Olfaction
+                        </h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">
+                            Peripheral and central olfactory systems in insects.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--accent-color); margin-bottom: 0.5rem;">
+                            <i class="fas fa-microchip"></i> Biosensors & AI
+                        </h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">
+                            Development of bioelectronic systems using insect receptors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Join Our Team</h2>
+            <div style="background: white; padding: 2rem; border-left: 4px solid var(--accent-color); border-radius: 0 8px 8px 0;">
+                <p style="margin-bottom: 1rem;">
+                    We are always interested in talented researchers, students, and collaborators who want to contribute to insect science and vector control research.
+                </p>
+                <p>
+                    <strong>Contact:</strong> <a href="contact.html" style="color: var(--accent-color);">Contact us for inquiries</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
+        <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
+        <p>&copy; 2026 CRCIV. All rights reserved.</p>
+    </footer>
+</body>
+</html>
