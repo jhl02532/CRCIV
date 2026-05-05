@@ -4,115 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRCIV | Convergence Research Center for Insect Vector</title>
+    <!-- 구글 폰트 (Noto Sans KR) & FontAwesome (아이콘) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* 기본 스타일 초기화 및 폰트 설정 */
+        /* 기본 설정 및 컬러 팔레트 */
+        :root {
+            --primary-color: #1a2a3a; /* SuanLab 스타일의 깊은 네이비/다크그레이 */
+            --accent-color: #007bff; /* 포인트 블루 */
+            --bg-light: #f8f9fa;
+            --text-main: #333;
+            --text-muted: #6c757d;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
-        a { text-decoration: none; color: #0056b3; }
-        a:hover { text-decoration: underline; }
-        
-        /* 네비게이션 바 */
-        header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        header h1 { font-size: 1.5rem; color: #2c3e50; }
-        nav ul { list-style: none; display: flex; gap: 1.5rem; }
-        nav a { color: #555; font-weight: bold; }
-        
-        /* 히어로(메인) 섹션 */
-        .hero { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; padding: 6rem 5%; text-align: center; }
-        .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+        body { font-family: 'Roboto', 'Noto Sans KR', sans-serif; color: var(--text-main); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+
+        /* 네비게이션 바 (스크롤 시 고정) */
+        header {
+            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 1px; }
+        .logo span { color: var(--accent-color); }
+        nav ul { display: flex; gap: 2rem; }
+        nav a { font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { color: var(--accent-color); }
+
+        /* 히어로 섹션 (메인 화면 꽉 차게) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 42, 58, 0.8), rgba(26, 42, 58, 0.9)), url('https://source.unsplash.com/1600x900/?dna,network') no-repeat center center/cover;
+            color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 2px; }
+        .hero p { font-size: 1.2rem; font-weight: 300; max-width: 800px; color: #e0e0e0; margin-bottom: 2rem; }
+        .btn-scroll {
+            display: inline-block; padding: 10px 25px; border: 2px solid white; border-radius: 30px;
+            color: white; font-weight: 500; transition: all 0.3s;
+        }
+        .btn-scroll:hover { background: white; color: var(--primary-color); }
 
         /* 공통 섹션 스타일 */
-        section { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
-        section h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #2c3e50; border-bottom: 2px solid #0056b3; display: inline-block; padding-bottom: 0.5rem; }
-        .section-center { text-align: center; }
+        section { padding: 5rem 10%; }
+        .bg-gray { background-color: var(--bg-light); }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; font-weight: 700; color: var(--primary-color); }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent-color); margin: 10px auto 0; }
 
-        /* 카드 레이아웃 (연구 분야 등) */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { margin-bottom: 1rem; color: #0056b3; }
+        /* Research (카드 UI) */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card {
+            background: white; padding: 2.5rem 2rem; border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center; border-top: 4px solid transparent;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-top-color: var(--accent-color); }
+        .card i { font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary-color); }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* 푸터 (연락처) */
-        footer { background: #2c3e50; color: #fff; text-align: center; padding: 2rem 5%; margin-top: 2rem; }
-        footer p { margin-bottom: 0.5rem; }
+        /* Members (프로필 스타일) */
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
+        .member { margin-bottom: 1rem; }
+        .member img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .member h4 { font-size: 1.1rem; color: var(--primary-color); }
+        .member p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Publications (리스트 스타일) */
+        .pub-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+        .pub-item { background: white; padding: 1.5rem; border-left: 4px solid var(--accent-color); box-shadow: 0 3px 10px rgba(0,0,0,0.03); border-radius: 0 8px 8px 0; }
+        .pub-item h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+        .pub-item .authors { font-size: 0.95rem; color: #555; margin-bottom: 0.3rem; }
+        .pub-item .venue { font-size: 0.9rem; font-style: italic; color: var(--text-muted); }
+        .tag { display: inline-block; background: #e9ecef; color: #495057; font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; margin-top: 10px; margin-right: 5px;}
+
+        /* Footer */
+        footer { background: var(--primary-color); color: #ccc; padding: 3rem 10%; text-align: center; }
+        footer p { margin-bottom: 0.5rem; font-size: 0.95rem; }
+        footer .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
+        footer .social-links a { color: white; font-size: 1.5rem; opacity: 0.7; transition: opacity 0.3s; }
+        footer .social-links a:hover { opacity: 1; }
+
+        /* 부드러운 스크롤 */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
 
-    <!-- 상단 메뉴 -->
+    <!-- Header / Nav -->
     <header>
-        <h1>CRCIV</h1>
+        <div class="logo">CRC<span>IV</span></div>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#research">Research</a></li>
+                <li><a href="#members">Members</a></li>
                 <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- 메인 소개 -->
-    <div class="hero">
-        <h2>Convergence Research Center for Insect Vector</h2>
-        <p>인천대학교 매개곤충융합연구센터(CRCIV)는 생물정보학, 집단유전학, 그리고 첨단 AI 기술을 융합하여 꿀벌 생태계 보전과 매개체 감시 연구를 선도합니다.</p>
-    </div>
-
-    <!-- 연구실 및 교수님 소개 -->
-    <section id="about" class="section-center">
-        <h2>About Us</h2>
-        <p><strong>Director:</strong> Prof. Hyung Wook Kwon (권형욱)</p>
-        <p style="margin-top: 1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-            우리 연구실은 곤충 매개체 및 유용 곤충의 유전체 정보를 해독하고, 이를 바탕으로 질병 제어 및 디지털 육종 플랫폼을 개발하는 데 주력하고 있습니다. 다학제적 접근을 통해 생명과학의 새로운 패러다임을 제시합니다.
-        </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Convergence Research Center<br>for Insect Vector</h1>
+        <p>인천대학교 매개곤충융합연구센터는 유전체학, 생물정보학, AI 기술을 융합하여<br>꿀벌 생태계 보전과 매개체 감시의 새로운 패러다임을 제시합니다.</p>
+        <a href="#research" class="btn-scroll">Explore Our Research</a>
     </section>
 
-    <!-- 주요 연구 분야 -->
-    <section id="research">
-        <div class="section-center">
-            <h2>Our Research</h2>
-        </div>
-        <div class="grid">
+    <!-- Research Section -->
+    <section id="research" class="bg-gray">
+        <h2 class="section-title">Research Areas</h2>
+        <div class="grid-3">
             <div class="card">
-                <h3>Population Genomics & Evolution</h3>
-                <p>재래꿀벌(<em>Apis cerana</em>)의 염색체 수준 참조 유전체 조립 및 모기 등 매개곤충의 집단유전학적 특성, 진화 과정을 탐구합니다.</p>
+                <i class="fas fa-dna"></i>
+                <h3>Population Genomics</h3>
+                <p>재래꿀벌(<em>Apis cerana</em>)의 염색체 수준 참조 유전체 조립 및 모기 등 매개곤충의 집단유전학적 진화 과정을 탐구합니다.</p>
             </div>
             <div class="card">
-                <h3>Bioinformatics & AI Models</h3>
-                <p>대용량 유전체 데이터 분석 파이프라인 구축 및 Nucleotide Transformer 등 최신 인공지능 모델을 활용한 서열 기반 단백질 구조 및 발현 예측 연구를 수행합니다.</p>
+                <i class="fas fa-laptop-code"></i>
+                <h3>Bioinformatics & AI</h3>
+                <p>대용량 유전체 데이터 분석과 Nucleotide Transformer 등 최신 인공지능을 활용한 서열 기반 발현 예측 연구를 수행합니다.</p>
             </div>
             <div class="card">
-                <h3>Digital Breeding & Certification</h3>
-                <p>형태학적, 유전적 마커를 활용하여 토종벌 가축 인증제를 확립하고, 스마트 양봉을 위한 디지털 육종 플랫폼을 개발합니다.</p>
+                <i class="fas fa-bug"></i>
+                <h3>Digital Breeding System</h3>
+                <p>형태학적/유전적 마커를 활용한 토종벌 가축 인증제 확립 및 스마트 양봉을 위한 디지털 육종 플랫폼을 개발합니다.</p>
             </div>
         </div>
     </section>
 
-    <!-- 최근 논문 및 소식 -->
-    <section id="publications">
-        <div class="section-center">
-            <h2>Recent Publications</h2>
+    <!-- Members Section -->
+    <section id="members">
+        <h2 class="section-title">Members</h2>
+        <div class="member-grid">
+            <div class="member">
+                <!-- 이미지 링크를 실제 사진 경로(예: images/prof_kwon.jpg)로 변경하세요 -->
+                <img src="https://via.placeholder.com/150/1a2a3a/ffffff?text=Prof" alt="Prof. Hyung Wook Kwon">
+                <h4>Hyung Wook Kwon</h4>
+                <p>Principal Investigator<br>Professor</p>
+            </div>
+            <div class="member">
+                <img src="https://via.placeholder.com/150/1a2a3a/ffffff?text=Ph.D" alt="Lab Manager">
+                <h4>Lab Manager</h4>
+                <p>Ph.D. Candidate<br>Bioinformatics & Genomics</p>
+            </div>
+            <div class="member">
+                <img src="https://via.placeholder.com/150/1a2a3a/ffffff?text=PostDoc" alt="Post-Doc">
+                <h4>Dr. Hyunji Kim</h4>
+                <p>Postdoctoral Researcher</p>
+            </div>
+            <div class="member">
+                <img src="https://via.placeholder.com/150/1a2a3a/ffffff?text=PostDoc" alt="Post-Doc">
+                <h4>Dr. Olga</h4>
+                <p>Postdoctoral Researcher</p>
+            </div>
         </div>
-        <ul>
-            <li style="margin-bottom: 1rem;">
-                <strong>A chromosome-level assembly of the Asian honey bee <em>Apis cerana</em> genome</strong> <br>
-                <em>Journal Name</em> (2025) - <a href="#">[PDF / DOI]</a>
-            </li>
-            <li style="margin-bottom: 1rem;">
-                <strong>Genomic surveillance of infectious disease vectors using advanced bioinformatics pipelines</strong> <br>
-                <em>Journal Name</em> (2026) - <a href="#">[PDF / DOI]</a>
-            </li>
-            <!-- 논문이 추가되면 이 부분에 `<li>` 태그를 복사해서 계속 이어 붙이면 됩니다. -->
-        </ul>
     </section>
 
-    <!-- 연락처 및 오시는 길 -->
-    <footer id="contact">
-        <h2>Contact Us</h2>
-        <p>📍 Incheon National University, Academy-ro 119, Yeonsu-gu, Incheon, Republic of Korea</p>
-        <p>📧 Email: director@example.inu.ac.kr (Prof. Hyung Wook Kwon)</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: #aaa;">&copy; 2026 Convergence Research Center for Insect Vector. All rights reserved.</p>
+    <!-- Publications Section -->
+    <section id="publications" class="bg-gray">
+        <h2 class="section-title">Selected Publications</h2>
+        <div class="pub-list">
+            <div class="pub-item">
+                <h4>A chromosome-level assembly of the Asian honey bee <em>Apis cerana</em> genome</h4>
+                <div class="authors">Author Name, <strong>Author Name</strong>, Hyung Wook Kwon*</div>
+                <div class="venue">Journal of High Impact, 2025</div>
+                <div>
+                    <span class="tag"><i class="fas fa-hashtag"></i> Apis_cerana</span>
+                    <span class="tag"><i class="fas fa-hashtag"></i> Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item">
+                <h4>Genomic surveillance of infectious disease vectors using advanced bioinformatics pipelines</h4>
+                <div class="authors">Author Name, <strong>Author Name</strong>, Hyung Wook Kwon*</div>
+                <div class="venue">Bioinformatics, 2026</div>
+                <div>
+                    <span class="tag"><i class="fas fa-hashtag"></i> Bioinformatics</span>
+                    <span class="tag"><i class="fas fa-hashtag"></i> Mosquito</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer>
+        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
+        <p>Incheon National University, Academy-ro 119, Yeonsu-gu, Incheon, Republic of Korea</p>
+        <p>Email: director@inu.ac.kr</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 CRCIV. All rights reserved.</p>
     </footer>
 
 </body>
