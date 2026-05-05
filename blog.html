@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .blog-hero {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            padding: 8rem 2rem 10rem;
+            background: var(--bg-gray);
+            color: var(--primary-color);
+            padding: 10rem 2rem 8rem;
             text-align: center;
+            border-bottom: 1px solid #e2e8f0;
         }
+        
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
         
         .blog-grid {
             display: grid;
@@ -145,20 +153,8 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">CRC<span>IV</span></div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header></header>
+
 
     <section class="blog-hero">
         <h1>Paper Review & News</h1>
@@ -169,20 +165,27 @@
         <!-- Posts will be injected here -->
     </div>
 
-    <footer>
-        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
-        <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
-        <p>&copy; 2026 CRCIV. All rights reserved.</p>
-    </footer>
+    <footer></footer>
 
+
+    <script src="assets/js/lab_info.js"></script>
+    <script src="assets/js/layout.js"></script>
     <script src="blog_data.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('blog-container');
             
             blogData.forEach(post => {
+                const isExternal = post.link.startsWith('http');
+                const target = isExternal ? 'target="_blank"' : '';
+                const linkText = isExternal ? 'Full Paper' : 'Read Review';
+                
                 const card = document.createElement('div');
                 card.className = 'blog-card';
+                card.style.cursor = 'pointer';
+                card.onclick = () => window.location.href = post.link;
+                
                 card.innerHTML = `
                     <div class="blog-image">
                         <img src="${post.image}" alt="${post.title}">
@@ -199,14 +202,15 @@
                             ${post.tags.map(tag => `<span class="blog-tag">#${tag}</span>`).join('')}
                         </div>
                         <div class="blog-footer">
-                            <a href="${post.link}" target="_blank" class="read-more">
-                                Full Paper <i class="fas fa-arrow-right"></i>
+                            <a href="${post.link}" ${target} class="read-more">
+                                ${linkText} <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 `;
                 container.appendChild(card);
             });
+
         });
     </script>
 </body>

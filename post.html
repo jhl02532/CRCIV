@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post | CRCIV Blog</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-white">
+
+    <header></header>
+
+    <main class="article-container">
+        <nav id="breadcrumbs" style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+            <a href="index.html" style="color: inherit; text-decoration: none;">Home</a> / 
+            <a href="blog.html" style="color: inherit; text-decoration: none;">Blog</a> / 
+            <span id="post-category-breadcrumb">Loading...</span>
+        </nav>
+
+        <article id="post-content-area">
+            <div class="article-header">
+                <span class="article-category" id="post-category">...</span>
+                <h1 class="article-title" id="post-title">Loading post...</h1>
+                <div class="article-meta">
+                    <span id="post-date"><i class="far fa-calendar-alt"></i> ...</span>
+                    <span><i class="far fa-user"></i> CRCIV Team</span>
+                </div>
+            </div>
+
+            <div id="markdown-body" class="article-content">
+                <div style="text-align:center; padding: 5rem 0; opacity: 0.5;">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <p>마크다운 파일을 불러오는 중입니다...</p>
+                </div>
+            </div>
+
+            <div class="article-tags" id="post-tags"></div>
+        </article>
+
+        <div class="article-footer">
+            <img src="https://via.placeholder.com/150/0f172a/ffffff?text=Director" alt="Author" class="author-img">
+            <div class="author-info">
+                <h4>CRCIV Research Team</h4>
+                <p>본 포스팅은 CRCIV 연구팀에서 작성한 마크다운 기반 리뷰입니다.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/lab_info.js"></script>
+    <script src="assets/js/layout.js"></script>
+    <script src="blog_data.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("Post Loader Initialized");
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            console.log("Post ID from URL:", postId);
+
+            if (!postId) {
+                console.error("No Post ID found in URL");
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            if (typeof blogData === 'undefined') {
+                console.error("blogData is not loaded. Check blog_data.js path.");
+                return;
+            }
+
+            const postMeta = blogData.find(p => p.id == postId || p.slug == postId);
+            
+            if (postMeta) {
+                document.getElementById('post-title').innerText = postMeta.title;
+                document.getElementById('post-category').innerText = postMeta.category;
+                document.getElementById('post-category-breadcrumb').innerText = postMeta.category;
+                document.getElementById('post-date').innerHTML = `<i class="far fa-calendar-alt"></i> ${postMeta.date}`;
+                
+                const mdPath = `assets/posts/${postMeta.slug || postId}.md`;
+                console.log("Fetching Markdown from:", mdPath);
+                
+                fetch(mdPath)
+                    .then(response => {
+                        console.log("Fetch response status:", response.status);
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return response.text();
+                    })
+                    .then(text => {
+                        console.log("Markdown content loaded successfully");
+                        // Use marked.parse with a fallback for different versions
+                        const htmlContent = typeof marked.parse === 'function' ? marked.parse(text) : marked(text);
+                        document.getElementById('markdown-body').innerHTML = htmlContent;
+                    })
+                    .catch(err => {
+                        console.error("Error loading or parsing markdown:", err);
+                        
+                        let errorMsg = `마크다운 파일(<b>${mdPath}</b>)을 불러올 수 없습니다.`;
+                        if (window.location.protocol === 'file:') {
+                            errorMsg += `<br><br><i class="fas fa-info-circle"></i> <b>로컬 보안 경고</b>: 브라우저에서 파일을 직접 열 경우(file://) 보안 정책상 외부 파일을 불러올 수 없습니다. VS Code의 <b>Live Server</b> 확장 프로그램을 사용해 주세요.`;
+                        }
+
+                        document.getElementById('markdown-body').innerHTML = `
+                            <div style="padding: 3rem; background: #fff1f2; color: #e11d48; border-radius: 12px; text-align: center;">
+                                <i class="fas fa-exclamation-triangle fa-2x"></i>
+                                <h3 style="margin-top: 1rem;">내용을 불러올 수 없습니다</h3>
+                                <p>${errorMsg}</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                console.error("Post meta not found for ID:", postId);
+                document.getElementById('markdown-body').innerHTML = '<h3>존재하지 않는 포스트입니다.</h3>';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -16,19 +16,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">CRC<span>IV</span></div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header></header>
+
 
     <div class="projects-hero">
         <h1>Research Projects</h1>
@@ -43,6 +32,10 @@
         <div class="stat-card">
             <h3 id="stat-ongoing">0</h3>
             <p>Active</p>
+        </div>
+        <div class="stat-card">
+            <h3 id="stat-agencies">0</h3>
+            <p>Agencies</p>
         </div>
         <div class="stat-card">
             <h3 id="stat-years">0</h3>
@@ -68,13 +61,13 @@
         </div>
     </div>
 
-    <footer>
-        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
-        <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
-        <p>&copy; 2026 CRCIV. All rights reserved.</p>
-    </footer>
+    <footer></footer>
 
+
+    <script src="assets/js/lab_info.js"></script>
+    <script src="assets/js/layout.js"></script>
     <script src="projects_data.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             let projectsData = [];
@@ -107,26 +100,17 @@
                 return endDate >= new Date();
             }
 
-            function formatCurrency(amount) {
-                const num = parseInt(amount, 10);
-                if (isNaN(num)) return amount;
-                if (num >= 100000000) {
-                    const uk = Math.floor(num / 100000000);
-                    const man = Math.floor((num % 100000000) / 10000);
-                    return uk + '억' + (man > 0 ? ' ' + man + '만' : '') + '원';
-                }
-                return num.toLocaleString() + '원';
-            }
-
             function updateUI() {
                 const ongoing = projectsData.filter(p => isOngoing(p.period));
                 const completed = projectsData.filter(p => !isOngoing(p.period));
+                const agencies = new Set(projectsData.map(p => p.agency));
 
                 // Update Stats
                 document.getElementById('stat-total').innerText = projectsData.length;
                 document.getElementById('stat-ongoing').innerText = ongoing.length;
-                
-                // Calculate Total Years (Span from earliest start to latest end)
+                document.getElementById('stat-agencies').innerText = agencies.size;
+
+                // Calculate Total Years
                 let minDate = new Date();
                 let maxDate = new Date(0);
                 let validDateFound = false;
@@ -134,8 +118,8 @@
                 projectsData.forEach(p => {
                     if (p.period && p.period.includes('~')) {
                         const [startStr, endStr] = p.period.split('~');
-                        const start = new Date(startStr.replace(/\./g, '-'));
-                        const end = new Date(endStr.replace(/\./g, '-'));
+                        const start = new Date(startStr);
+                        const end = new Date(endStr);
                         if (!isNaN(start) && !isNaN(end)) {
                             if (start < minDate) minDate = start;
                             if (end > maxDate) maxDate = end;
@@ -146,10 +130,10 @@
 
                 let totalYears = 0;
                 if (validDateFound) {
-                    const totalDays = (maxDate - minDate) / (1000 * 60 * 60 * 24);
-                    totalYears = (totalDays / 365).toFixed(1);
+                    const diffTime = Math.abs(maxDate - minDate);
+                    totalYears = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 365));
                 }
-                document.getElementById('stat-years').innerText = totalYears + 'Y';
+                document.getElementById('stat-years').innerText = totalYears;
 
                 // Update Counts
                 document.getElementById('count-all').innerText = projectsData.length;
@@ -157,6 +141,38 @@
                 document.getElementById('count-completed').innerText = completed.length;
 
                 renderGrid();
+            }
+
+            function getProjectSummary(title) {
+                // Category: Mosquito / Vector Surveillance
+                if (title.includes('감시 거점센터')) return '질병관리청 주관으로 기후 변화에 따른 감염병 매개체 발생을 실시간으로 모니터링하고 국가 방역망을 강화하는 핵심 거점 연구입니다.';
+                if (title.includes('말라리아') || title.includes('Anopheles')) return '국내외 말라리아 매개 모기의 분류, 분포 및 감염병 전파 능력을 형태학적·분자생물학적 기법으로 정밀 분석합니다.';
+                if (title.includes('마이크로바이옴')) return '모기 및 곤충 장내 미생물 군집(Microbiome) 분석을 통해 병원체 전파 효율과 매개 곤충의 생리적 특성 간의 상관관계를 규명합니다.';
+                if (title.includes('웨스트나일열')) return '웨스트나일 바이러스를 매개하는 특정 모기 종의 마이크로바이옴 DB 구축을 통해 질병 유입 차단 및 역학 분석 모델을 수립합니다.';
+                
+                // Category: Honeybee / Apiculture
+                if (title.includes('토종벌') || title.includes('재래꿀벌') || title.includes('Apis cerana')) return '한국 토종꿀벌의 고유 혈통 보호와 유전적 우수성 발굴을 위해 전장 유전체 해독 및 비교 게놈 연구를 수행합니다.';
+                if (title.includes('꿀벌') && (title.includes('영양') || title.includes('사료'))) return '기후 변화로 인한 밀원 부족에 대응하여 꿀벌의 생리적 요구도에 최적화된 유전체 기반 대체 사료 및 영양 보급 기술을 개발합니다.';
+                if (title.includes('꿀벌') && title.includes('비적응')) return '이상 기온 등 급격한 환경 변화에 따른 꿀벌의 행동 이상과 군집 붕괴 현상을 과학적으로 진단하고 대응 마커를 발굴합니다.';
+                if (title.includes('화분매개')) return '화분매개 곤충의 생태적 가치를 보존하고, 농작물 생산성 향상을 위한 효율적인 화분 매개 시스템 및 관리 플랫폼을 구축합니다.';
+                
+                // Category: Climate Change / Ecology
+                if (title.includes('기후변화') && title.includes('디커플링')) return '온난화에 따른 식물의 개화 시기와 곤충의 활동 시기 간 불일치(Decoupling) 현상을 조사하여 생태계 변화를 예측합니다.';
+                if (title.includes('이상기온') || title.includes('이상기상')) return '급격한 기상 이변에 대응하여 곤충 군집의 안정성을 평가하고 스마트 기술을 활용한 실시간 경보 및 관리 시스템을 구축합니다.';
+                
+                // Category: Control Technology / Repellent
+                if (title.includes('기피제') || title.includes('살충')) return '천연물 유래 성분이나 신소재를 활용하여 인체 무해하면서도 효과적인 절지동물 매개 감염병 차단용 방제 기술을 개발하고 검증합니다.';
+                if (title.includes('유인제') || title.includes('독일바퀴')) return '해충의 먹이 습성과 화학 감각 기전을 분석하여 특정 해충만을 효과적으로 제어하는 표적형 방제 솔루션을 연구합니다.';
+                if (title.includes('Behavior') || title.includes('퇴치')) return '첨단 센서 및 모니터링 장비를 활용하여 실내외 유해 곤충의 행동 패턴을 분석하고 지능형 퇴치 솔루션의 효능을 검증합니다.';
+                
+                // Category: Global / Planning
+                if (title.includes('KOICA') || title.includes('국제협력')) return '개발도상국의 감염병 매개체 관리 역량 강화를 위해 현지 실태 조사 및 맞춤형 방제 기술 전수를 위한 국제 협력 네트워크를 구축합니다.';
+                if (title.includes('공동기획')) return '다부처 협력을 통해 감염병 안전망 구축을 위한 중장기 연구 전략을 수립하고 차세대 융복합 기반 기술 로드맵을 기획합니다.';
+                
+                // Default fallback based on generic keywords
+                if (title.includes('꿀벌')) return '양봉 산업의 지속가능성과 꿀벌 생태계 보호를 위한 다각도적 유전·생리 연구를 수행합니다.';
+                if (title.includes('모기')) return '감염병 매개 모기의 생태적 특성 규명을 통한 효과적인 국가 방역 전략 수립 연구입니다.';
+                return '융복합 기반 기술을 활용하여 매개곤충 제어 및 감염병 예방을 위한 혁신적인 연구 플랫폼을 구축합니다.';
             }
 
             function renderGrid() {
@@ -176,6 +192,9 @@
                             ${ongoing ? 'ACTIVE' : 'COMPLETED'}
                         </div>
                         <h3>${p.title}</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.5; border-left: 3px solid var(--accent-color); padding-left: 10px;">
+                            ${getProjectSummary(p.title)}
+                        </p>
                         <div class="project-info">
                             <div class="info-item">
                                 <i class="fas fa-user-tie"></i>
@@ -190,12 +209,7 @@
                             <div class="info-item">
                                 <i class="fas fa-calendar-alt"></i>
                                 <span class="label">Period</span>
-                                <span>${p.period}</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-coins"></i>
-                                <span class="label">Funding</span>
-                                <span>${formatCurrency(p.funding)}</span>
+                                <span>${p.period} <small style="opacity: 0.7;">(1 Agency)</small></span>
                             </div>
                         </div>
                     `;

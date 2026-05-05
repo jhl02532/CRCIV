@@ -18,71 +18,90 @@
 <body>
 
     <!-- Header / Nav -->
-    <header>
-        <div class="logo">CRC<span>IV</span></div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header></header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>Convergence Research Center<br>for Insect Vector</h1>
-        <p>곤충 매개 감염병의 근원적 해결을 위해 곤충 감각생리, 벡터 제어, 비교 게노믹스를<br>융합하는 차세대 연구 기관입니다.</p>
-        <a href="#research" class="btn btn-primary">Explore Our Research</a>
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/video/hero_bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1>Convergence Research Center<br>for Insect Vector</h1>
+            <p>곤충 매개 감염병의 근원적 해결을 위해 곤충 감각생리, 벡터 제어, 비교 게노믹스를<br>융합하는 차세대 연구 기관입니다.</p>
+            <a href="#research" class="btn btn-primary">Explore Our Research</a>
+        </div>
     </section>
 
     <!-- Research Section -->
     <section id="research" class="bg-gray">
         <h2 class="section-title">Research Areas</h2>
-        <div class="grid-4" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-            <a href="research.html#sensory" class="card-link">
-                <div class="card">
-                    <i class="fas fa-bug"></i>
-                    <h3>Insect Sensory</h3>
-                    <p>곤충의 미각 및 후각 수용체의 분자 메커니즘을 규명하고, 다양한 환경 신호에 대한 감각 신경의 반응 원리를 연구합니다.</p>
-                </div>
-            </a>
-            <a href="research.html#vector" class="card-link">
-                <div class="card">
-                    <i class="fas fa-virus"></i>
-                    <h3>Disease Vector Control</h3>
-                    <p>모기와 매개곤충의 혈액 섭식 행동, 숙주 탐색 메커니즘을 규명하여 효과적인 벡터 제어 전략을 개발합니다.</p>
-                </div>
-            </a>
-            <a href="research.html#genomics" class="card-link">
-                <div class="card">
-                    <i class="fas fa-dna"></i>
-                    <h3>Genomics</h3>
-                    <p>꿀벌, 모기, 바퀴벌레 등 다양한 곤충 종의 게놈 서열 비교를 통해 종 특이적 진화 특성 및 적응 메커니즘을 분석합니다.</p>
-                </div>
-            </a>
-            <a href="research.html#biosensors" class="card-link">
-                <div class="card">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Biosensors & AI</h3>
-                    <p>곤충 감각 수용체를 활용한 바이오센서 개발 및 AI 기술을 통한 식품 품질 검사 시스템을 연구합니다.</p>
-                </div>
-            </a>
+        <div class="grid-4" id="research-grid">
+            <!-- Dynamic Content -->
         </div>
     </section>
 
-    <!-- Members Section -->
-    <section id="members">
+    <style>
+        .pi-brief-card {
+            background: var(--bg-light);
+            border-radius: 24px;
+            padding: 3.5rem;
+            border: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        .pi-brief-sidebar {
+            text-align: center;
+            border-right: 1px solid var(--border-color);
+            padding-right: 4rem;
+        }
+        @media (max-width: 992px) {
+            .pi-brief-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+            .pi-brief-sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+        }
+    </style>
+
+    <section id="members" class="container" style="padding-top: 6rem; padding-bottom: 6rem;">
         <h2 class="section-title">Leadership</h2>
-        <div class="member-grid">
-            <div class="member">
-                <img src="https://via.placeholder.com/150/1a2a3a/ffffff?text=Prof.+Kwon" alt="Prof. Hyung Wook Kwon">
-                <h4>권형욱 (Hyung Wook Kwon)</h4>
-                <p>Director & Professor<br>곤충 감각생리 전문가</p>
+        <div class="pi-brief-card">
+            <div class="pi-brief-sidebar">
+                <div style="font-size: 6rem; color: var(--accent-color); margin-bottom: 1.5rem;"><i class="fas fa-user-tie"></i></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">권형욱 (Hyung Wook Kwon)</h3>
+                <p style="color: var(--accent-color); font-weight: 700; margin-bottom: 2rem;">Principal Investigator / Professor</p>
+                <div style="display: flex; justify-content: center; gap: 1.5rem; font-size: 1.1rem;">
+                    <div style="text-align: center;">
+                        <span style="display: block; font-size: 1.6rem; font-weight: 800; color: var(--primary-color);">167+</span>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Papers</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="display: block; font-size: 1.6rem; font-weight: 800; color: var(--primary-color);">3,917+</span>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Citations</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pi-brief-content">
+                <h4 style="margin-bottom: 1.2rem; color: var(--primary-color); display: flex; align-items: center; gap: 10px;"><i class="fas fa-university"></i> Current Affiliations</h4>
+                <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                    <li style="margin-bottom: 0.6rem; font-size: 0.95rem;">• 국립 인천대학교 생명과학부 정교수 / CRCIV 소장</li>
+                    <li style="margin-bottom: 0.6rem; font-size: 0.95rem;">• (사)한국방역학회 초대 학회장 / 한국양봉학회 학회장</li>
+                    <li style="margin-bottom: 0.6rem; font-size: 0.95rem;">• 주식회사 인센소리 (Insensory Inc.) 대표이사 (CEO)</li>
+                    <li style="margin-bottom: 0.6rem; font-size: 0.95rem;">• 질병관리청 기후변화 매개체 감시거점센터장</li>
+                </ul>
+                <h4 style="margin-bottom: 1.2rem; color: var(--primary-color); display: flex; align-items: center; gap: 10px;"><i class="fas fa-award"></i> Key Honors</h4>
+                <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 1.5rem;">2023 보건복지부 장관상 수상 (기후변화 매개체감시 유공)</p>
+                <a href="team.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">View Full CV <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -91,95 +110,80 @@
     <section id="publications" class="bg-gray">
         <h2 class="section-title">Representative Publications</h2>
         <div class="pub-list">
-            <div class="pub-item">
+            <div class="pub-item fade-up">
                 <h4>Uncovering the novel characteristics of Asian honey bee, Apis cerana, by whole genome sequencing</h4>
                 <div class="authors">Doori Park, Je Won Jung, ..., <strong>Hyung Wook Kwon*</strong></div>
                 <div class="venue">BMC Genomics, 2015 | Citations: 1183</div>
                 <div>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Apis_cerana</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Genomics</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Comparative_Genomics</span>
+                    <span class="tag">#Apis_cerana</span>
+                    <span class="tag">#Genomics</span>
+                    <span class="tag">#Comparative_Genomics</span>
                 </div>
             </div>
-            <div class="pub-item">
+            <div class="pub-item fade-up">
                 <h4>A novel olfactory pathway is essential for fast and efficient blood-feeding in mosquitoes</h4>
                 <div class="authors">Je Won Jung, Seung-Jae Baeck, ..., <strong>Hyung Wook Kwon*</strong></div>
                 <div class="venue">Scientific Reports, 2015</div>
                 <div>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Mosquito</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Olfaction</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Vector_Control</span>
+                    <span class="tag">#Mosquito</span>
+                    <span class="tag">#Olfaction</span>
+                    <span class="tag">#Vector_Control</span>
                 </div>
             </div>
-            <div class="pub-item">
+            <div class="pub-item fade-up">
                 <h4>Discrimination of umami tastants using floating electrode-based bioelectronic tongue mimicking insect taste systems</h4>
                 <div class="authors">Minju Lee, Je Won Jung, ..., <strong>Hyung Wook Kwon*</strong></div>
                 <div class="venue">ACS Nano, 2015 | Citations: 52</div>
                 <div>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Biosensor</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Taste_Receptors</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> AI_Application</span>
-                </div>
-            </div>
-            <div class="pub-item">
-                <h4>Olfactory responses in a gustatory organ of the malaria vector mosquito Anopheles gambiae</h4>
-                <div class="authors"><strong>Hyung Wook Kwon</strong>, Tan Lu, ..., Laurence J. Zwiebel</div>
-                <div class="venue">Proceedings of the National Academy of Sciences, 2006 | Citations: 194</div>
-                <div>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Anopheles</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Taste_Receptors</span>
-                    <span class="tag"><i class="fas fa-hashtag"></i> Malaria_Vector</span>
+                    <span class="tag">#Biosensor</span>
+                    <span class="tag">#Taste_Receptors</span>
+                    <span class="tag">#AI_Application</span>
                 </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="publications.html" class="btn btn-primary" style="display: inline-block;">View All Publications</a>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="publications.html" class="btn btn-primary">View All Publications</a>
         </div>
     </section>
 
-    <!-- Media Corridor Section -->
-    <section id="media" class="bg-white">
-        <h2 class="section-title">Media Corridor</h2>
-        <p style="text-align:center; color: #64748b; margin-bottom: 2.5rem; margin-top: -2rem;">연구소 관련 최신 언론 보도 및 소식</p>
-        <div class="projects-container">
+    <!-- News Section -->
+    <section id="news" class="bg-white">
+        <h2 class="section-title">Latest News</h2>
+        <p style="text-align:center; color: var(--text-muted); margin-bottom: 2.5rem; margin-top: -2rem;">연구소 관련 최신 언론 보도 및 소식</p>
+        <div class="news-container">
             <div class="news-grid" id="news-container">
                 <!-- News cards will be injected here -->
             </div>
             <div style="text-align: center; margin-top: 2.5rem;">
-                <button id="news-more-btn" class="btn" style="background: var(--accent-color); color: white;">더 보기 <i class="fas fa-chevron-down"></i></button>
+                <button id="news-more-btn" class="btn btn-primary" style="background: var(--primary-color);">더 보기 <i class="fas fa-chevron-down"></i></button>
             </div>
         </div>
     </section>
 
     <!-- Footer / Contact -->
-    <footer>
-        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
-        <p>매개체감염병연구소</p>
-        <p>Incheon National University (인천대학교)</p>
-        <p>Director: Prof. Hyung Wook Kwon (권형욱)</p>
-        <p style="margin-top: 1rem; font-size: 0.95rem;">Incheon National University, Academy-ro 119, Yeonsu-gu, Incheon 22012, Republic of Korea</p>
-        <p style="font-size: 0.95rem;">Phone: +82-32-835-XXXX | Email: <a href="mailto:kwon@inu.ac.kr" style="color: white;">kwon@inu.ac.kr</a></p>
-        <div class="social-links">
-            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="mailto:kwon@inu.ac.kr" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 CRCIV. All rights reserved. | <a href="#" style="color: #bbb;">Privacy Policy</a></p>
-    </footer>
+    <footer></footer>
 
+    <!-- Scripts -->
+    <script src="assets/js/lab_info.js"></script>
+    <script src="assets/js/research_data.js"></script>
     <script src="news_data.js"></script>
+    <script src="assets/js/layout.js"></script>
     <script src="assets/js/main.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const newsContainer = document.getElementById('news-container');
             const moreBtn = document.getElementById('news-more-btn');
-            const PAGE_SIZE = 8;
+            const PAGE_SIZE = 6;
             let shown = 0;
 
             function renderNews() {
+                if (!newsContainer || typeof newsData === 'undefined') return;
+                
                 const batch = newsData.slice(shown, shown + PAGE_SIZE);
                 batch.forEach(item => {
                     const card = document.createElement('div');
-                    card.className = 'news-card';
+                    card.className = 'news-card fade-up';
                     card.innerHTML = `
                         <div class="news-header">
                             <span class="news-source"><i class="far fa-newspaper"></i> ${item.source}</span>
@@ -195,6 +199,11 @@
                 shown += batch.length;
                 if (shown >= newsData.length) {
                     moreBtn.style.display = 'none';
+                }
+                
+                // Re-trigger scroll observer for new items
+                if (typeof initScrollAnimations === 'function') {
+                    initScrollAnimations();
                 }
             }
 
