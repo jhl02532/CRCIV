@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRCIV | Convergence Research Center for Insect Vector</title>
+    <style>
+        /* 기본 스타일 초기화 및 폰트 설정 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
+        a { text-decoration: none; color: #0056b3; }
+        a:hover { text-decoration: underline; }
+        
+        /* 네비게이션 바 */
+        header { background: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 1.5rem; color: #2c3e50; }
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav a { color: #555; font-weight: bold; }
+        
+        /* 히어로(메인) 섹션 */
+        .hero { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: #fff; padding: 6rem 5%; text-align: center; }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+        /* 공통 섹션 스타일 */
+        section { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+        section h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #2c3e50; border-bottom: 2px solid #0056b3; display: inline-block; padding-bottom: 0.5rem; }
+        .section-center { text-align: center; }
+
+        /* 카드 레이아웃 (연구 분야 등) */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { margin-bottom: 1rem; color: #0056b3; }
+
+        /* 푸터 (연락처) */
+        footer { background: #2c3e50; color: #fff; text-align: center; padding: 2rem 5%; margin-top: 2rem; }
+        footer p { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 메뉴 -->
+    <header>
+        <h1>CRCIV</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 메인 소개 -->
+    <div class="hero">
+        <h2>Convergence Research Center for Insect Vector</h2>
+        <p>인천대학교 매개곤충융합연구센터(CRCIV)는 생물정보학, 집단유전학, 그리고 첨단 AI 기술을 융합하여 꿀벌 생태계 보전과 매개체 감시 연구를 선도합니다.</p>
+    </div>
+
+    <!-- 연구실 및 교수님 소개 -->
+    <section id="about" class="section-center">
+        <h2>About Us</h2>
+        <p><strong>Director:</strong> Prof. Hyung Wook Kwon (권형욱)</p>
+        <p style="margin-top: 1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            우리 연구실은 곤충 매개체 및 유용 곤충의 유전체 정보를 해독하고, 이를 바탕으로 질병 제어 및 디지털 육종 플랫폼을 개발하는 데 주력하고 있습니다. 다학제적 접근을 통해 생명과학의 새로운 패러다임을 제시합니다.
+        </p>
+    </section>
+
+    <!-- 주요 연구 분야 -->
+    <section id="research">
+        <div class="section-center">
+            <h2>Our Research</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Population Genomics & Evolution</h3>
+                <p>재래꿀벌(<em>Apis cerana</em>)의 염색체 수준 참조 유전체 조립 및 모기 등 매개곤충의 집단유전학적 특성, 진화 과정을 탐구합니다.</p>
+            </div>
+            <div class="card">
+                <h3>Bioinformatics & AI Models</h3>
+                <p>대용량 유전체 데이터 분석 파이프라인 구축 및 Nucleotide Transformer 등 최신 인공지능 모델을 활용한 서열 기반 단백질 구조 및 발현 예측 연구를 수행합니다.</p>
+            </div>
+            <div class="card">
+                <h3>Digital Breeding & Certification</h3>
+                <p>형태학적, 유전적 마커를 활용하여 토종벌 가축 인증제를 확립하고, 스마트 양봉을 위한 디지털 육종 플랫폼을 개발합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 최근 논문 및 소식 -->
+    <section id="publications">
+        <div class="section-center">
+            <h2>Recent Publications</h2>
+        </div>
+        <ul>
+            <li style="margin-bottom: 1rem;">
+                <strong>A chromosome-level assembly of the Asian honey bee <em>Apis cerana</em> genome</strong> <br>
+                <em>Journal Name</em> (2025) - <a href="#">[PDF / DOI]</a>
+            </li>
+            <li style="margin-bottom: 1rem;">
+                <strong>Genomic surveillance of infectious disease vectors using advanced bioinformatics pipelines</strong> <br>
+                <em>Journal Name</em> (2026) - <a href="#">[PDF / DOI]</a>
+            </li>
+            <!-- 논문이 추가되면 이 부분에 `<li>` 태그를 복사해서 계속 이어 붙이면 됩니다. -->
+        </ul>
+    </section>
+
+    <!-- 연락처 및 오시는 길 -->
+    <footer id="contact">
+        <h2>Contact Us</h2>
+        <p>📍 Incheon National University, Academy-ro 119, Yeonsu-gu, Incheon, Republic of Korea</p>
+        <p>📧 Email: director@example.inu.ac.kr (Prof. Hyung Wook Kwon)</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #aaa;">&copy; 2026 Convergence Research Center for Insect Vector. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
