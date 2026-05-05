@@ -4,96 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRCIV | Convergence Research Center for Insect Vector</title>
-    <!-- 구글 폰트 (Noto Sans KR) & FontAwesome (아이콘) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="CRCIV (Convergence Research Center for Insect Vector) - 곤충 매개 감염병 해결을 위한 차세대 연구 기관. 곤충 감각생리, 벡터 제어, 비교 게노믹스 융합 연구.">
+    <meta name="keywords" content="CRCIV, 곤충매개, 감염병, 권형욱, 인천대, 모기, 꿀벌, 게노믹스, 바이오센서">
+    <meta property="og:title" content="CRCIV | Convergence Research Center for Insect Vector">
+    <meta property="og:description" content="곤충 매개 감염병 해결을 위한 차세대 연구 기관. 곤충 감각생리, 벡터 제어, 비교 게노믹스 융합 연구.">
+    <meta property="og:type" content="website">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* 기본 설정 및 컬러 팔레트 */
-        :root {
-            --primary-color: #1a2a3a; /* SuanLab 스타일의 깊은 네이비/다크그레이 */
-            --accent-color: #007bff; /* 포인트 블루 */
-            --bg-light: #f8f9fa;
-            --text-main: #333;
-            --text-muted: #6c757d;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', 'Noto Sans KR', sans-serif; color: var(--text-main); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: color 0.3s; }
-        ul { list-style: none; }
-
-        /* 네비게이션 바 (스크롤 시 고정) */
-        header {
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); letter-spacing: 1px; }
-        .logo span { color: var(--accent-color); }
-        nav ul { display: flex; gap: 2rem; }
-        nav a { font-weight: 500; font-size: 0.95rem; }
-        nav a:hover { color: var(--accent-color); }
-
-        /* 히어로 섹션 (메인 화면 꽉 차게) */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(26, 42, 58, 0.8), rgba(26, 42, 58, 0.9)), url('https://source.unsplash.com/1600x900/?dna,network') no-repeat center center/cover;
-            color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;
-        }
-        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 2px; }
-        .hero p { font-size: 1.2rem; font-weight: 300; max-width: 800px; color: #e0e0e0; margin-bottom: 2rem; }
-        .btn-scroll {
-            display: inline-block; padding: 10px 25px; border: 2px solid white; border-radius: 30px;
-            color: white; font-weight: 500; transition: all 0.3s;
-        }
-        .btn-scroll:hover { background: white; color: var(--primary-color); }
-
-        /* 공통 섹션 스타일 */
-        section { padding: 5rem 10%; }
-        .bg-gray { background-color: var(--bg-light); }
-        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; font-weight: 700; color: var(--primary-color); }
-        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent-color); margin: 10px auto 0; }
-
-        /* Research (카드 UI) */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card {
-            background: white; padding: 2.5rem 2rem; border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center; border-top: 4px solid transparent;
-        }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-top-color: var(--accent-color); }
-        .card i { font-size: 3rem; color: var(--accent-color); margin-bottom: 1.5rem; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--primary-color); }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        /* Members (프로필 스타일) */
-        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
-        .member { margin-bottom: 1rem; }
-        .member img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .member h4 { font-size: 1.1rem; color: var(--primary-color); }
-        .member p { font-size: 0.9rem; color: var(--text-muted); }
-
-        /* Publications (리스트 스타일) */
-        .pub-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
-        .pub-item { background: white; padding: 1.5rem; border-left: 4px solid var(--accent-color); box-shadow: 0 3px 10px rgba(0,0,0,0.03); border-radius: 0 8px 8px 0; }
-        .pub-item h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-        .pub-item .authors { font-size: 0.95rem; color: #555; margin-bottom: 0.3rem; }
-        .pub-item .venue { font-size: 0.9rem; font-style: italic; color: var(--text-muted); }
-        .tag { display: inline-block; background: #e9ecef; color: #495057; font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; margin-top: 10px; margin-right: 5px;}
-
-        /* Footer */
-        footer { background: var(--primary-color); color: #ccc; padding: 3rem 10%; text-align: center; }
-        footer p { margin-bottom: 0.5rem; font-size: 0.95rem; }
-        footer .social-links { margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; }
-        footer .social-links a { color: white; font-size: 1.5rem; opacity: 0.7; transition: opacity 0.3s; }
-        footer .social-links a:hover { opacity: 1; }
-
-        /* 부드러운 스크롤 */
-        html { scroll-behavior: smooth; }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -104,7 +24,9 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
                 <li><a href="publications.html">Publications</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -115,38 +37,41 @@
     <section id="home" class="hero">
         <h1>Convergence Research Center<br>for Insect Vector</h1>
         <p>곤충 매개 감염병의 근원적 해결을 위해 곤충 감각생리, 벡터 제어, 비교 게노믹스를<br>융합하는 차세대 연구 기관입니다.</p>
-        <a href="#research" class="btn-scroll">Explore Our Research</a>
+        <a href="#research" class="btn btn-primary">Explore Our Research</a>
     </section>
 
     <!-- Research Section -->
     <section id="research" class="bg-gray">
         <h2 class="section-title">Research Areas</h2>
-        <div class="grid-3">
-            <div class="card">
-                <i class="fas fa-tongue"></i>
-                <h3>Insect Taste Receptors</h3>
-                <p>곤충 미각 수용체의 분자 메커니즘을 규명하고, Apis mellifera와 Apis cerana의 맛 감지 차이를 연구합니다.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-virus"></i>
-                <h3>Disease Vector Control</h3>
-                <p>모기와 매개곤충의 혈액 섭식 행동, 숙주 탐색 메커니즘을 규명하여 효과적인 벡터 제어 전략을 개발합니다.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-nose"></i>
-                <h3>Insect Olfaction</h3>
-                <p>곤충의 후각 시스템 구조와 냄새 수용체 발현을 분석하여 신경생물학적 원리를 규명합니다.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-dna"></i>
-                <h3>Comparative Genomics</h3>
-                <p>꿀벌, 모기, 바퀴벌레 등 다양한 곤충 종의 게놈 서열 비교를 통해 종 특이적 특성을 분석합니다.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-microchip"></i>
-                <h3>Biosensors & AI</h3>
-                <p>곤충 맛 수용체를 활용한 바이오센서 개발 및 AI 기술을 통한 식품 품질 검사 시스템을 연구합니다.</p>
-            </div>
+        <div class="grid-4" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <a href="research.html#sensory" class="card-link">
+                <div class="card">
+                    <i class="fas fa-bug"></i>
+                    <h3>Insect Sensory</h3>
+                    <p>곤충의 미각 및 후각 수용체의 분자 메커니즘을 규명하고, 다양한 환경 신호에 대한 감각 신경의 반응 원리를 연구합니다.</p>
+                </div>
+            </a>
+            <a href="research.html#vector" class="card-link">
+                <div class="card">
+                    <i class="fas fa-virus"></i>
+                    <h3>Disease Vector Control</h3>
+                    <p>모기와 매개곤충의 혈액 섭식 행동, 숙주 탐색 메커니즘을 규명하여 효과적인 벡터 제어 전략을 개발합니다.</p>
+                </div>
+            </a>
+            <a href="research.html#genomics" class="card-link">
+                <div class="card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Genomics</h3>
+                    <p>꿀벌, 모기, 바퀴벌레 등 다양한 곤충 종의 게놈 서열 비교를 통해 종 특이적 진화 특성 및 적응 메커니즘을 분석합니다.</p>
+                </div>
+            </a>
+            <a href="research.html#biosensors" class="card-link">
+                <div class="card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Biosensors & AI</h3>
+                    <p>곤충 감각 수용체를 활용한 바이오센서 개발 및 AI 기술을 통한 식품 품질 검사 시스템을 연구합니다.</p>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -208,7 +133,21 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 2rem;">
-            <a href="publications.html" class="btn-scroll" style="display: inline-block;">View All Publications</a>
+            <a href="publications.html" class="btn btn-primary" style="display: inline-block;">View All Publications</a>
+        </div>
+    </section>
+
+    <!-- Media Corridor Section -->
+    <section id="media" class="bg-white">
+        <h2 class="section-title">Media Corridor</h2>
+        <p style="text-align:center; color: #64748b; margin-bottom: 2.5rem; margin-top: -2rem;">연구소 관련 최신 언론 보도 및 소식</p>
+        <div class="projects-container">
+            <div class="news-grid" id="news-container">
+                <!-- News cards will be injected here -->
+            </div>
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <button id="news-more-btn" class="btn" style="background: var(--accent-color); color: white;">더 보기 <i class="fas fa-chevron-down"></i></button>
+            </div>
         </div>
     </section>
 
@@ -227,5 +166,43 @@
         <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 CRCIV. All rights reserved. | <a href="#" style="color: #bbb;">Privacy Policy</a></p>
     </footer>
 
+    <script src="news_data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const newsContainer = document.getElementById('news-container');
+            const moreBtn = document.getElementById('news-more-btn');
+            const PAGE_SIZE = 8;
+            let shown = 0;
+
+            function renderNews() {
+                const batch = newsData.slice(shown, shown + PAGE_SIZE);
+                batch.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'news-card';
+                    card.innerHTML = `
+                        <div class="news-header">
+                            <span class="news-source"><i class="far fa-newspaper"></i> ${item.source}</span>
+                            <span class="news-date">${item.date}</span>
+                        </div>
+                        <a href="${item.link}" target="_blank" class="news-title">
+                            <h3>${item.title}</h3>
+                        </a>
+                        <p class="news-summary">${item.summary}</p>
+                    `;
+                    newsContainer.appendChild(card);
+                });
+                shown += batch.length;
+                if (shown >= newsData.length) {
+                    moreBtn.style.display = 'none';
+                }
+            }
+
+            if (newsContainer && typeof newsData !== 'undefined') {
+                renderNews();
+                moreBtn.addEventListener('click', renderNews);
+            }
+        });
+    </script>
 </body>
 </html>

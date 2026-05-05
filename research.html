@@ -4,115 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research | CRCIV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Research Areas of CRCIV - 곤충 미각, 후각, 벡터 제어, 비교 게노믹스 및 바이오센서 기술 연구.">
+    <meta name="keywords" content="Research, CRCIV, Taste Receptors, Vector Control, Olfaction, Comparative Genomics, Biosensors">
+    <meta property="og:title" content="Research | CRCIV">
+    <meta property="og:description" content="Research Areas of CRCIV - 곤충 미각, 후각, 벡터 제어, 비교 게노믹스 및 바이오센서 기술 연구.">
+    <meta property="og:type" content="website">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a2a3a;
-            --accent-color: #007bff;
-            --bg-light: #f8f9fa;
-            --text-main: #333;
-            --text-muted: #6c757d;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', 'Noto Sans KR', sans-serif; color: var(--text-main); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: color 0.3s; }
-        ul { list-style: none; }
-
-        header {
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
-        .logo span { color: var(--accent-color); }
-        nav ul { display: flex; gap: 2rem; }
-        nav a { font-weight: 500; font-size: 0.95rem; }
-        nav a:hover { color: var(--accent-color); }
-        
-        main { margin-top: 80px; padding: 3rem 10%; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-        .subtitle { color: var(--text-muted); margin-bottom: 2rem; }
-        
-        .research-area {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-color);
-        }
-
-        .research-area h2 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .research-area h2 i {
-            color: var(--accent-color);
-            font-size: 1.8rem;
-        }
-
-        .research-area .description {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .research-area h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-top: 1.5rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .research-area ul {
-            margin-left: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .research-area li {
-            list-style: disc;
-            margin-bottom: 0.5rem;
-        }
-
-        .key-papers {
-            background: var(--bg-light);
-            padding: 1rem;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-
-        .key-papers p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .paper-link {
-            color: var(--accent-color);
-            font-weight: 500;
-        }
-
-        .paper-link:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background: var(--primary-color);
-            color: #ccc;
-            padding: 3rem 10%;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        footer a { color: white; }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -121,6 +22,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -132,32 +34,32 @@
         <h1>Research Areas</h1>
         <p class="subtitle">CRCIV의 5대 핵심 연구 분야</p>
 
-        <!-- 1. Insect Taste Receptors -->
-        <div class="research-area">
-            <h2><i class="fas fa-tongue"></i> Insect Taste Receptors</h2>
+        <!-- 1. Insect Sensory -->
+        <div class="research-area" id="sensory">
+            <h2><i class="fas fa-bug"></i> Insect Sensory</h2>
             <p class="description">
-                곤충 미각 수용체의 분자 메커니즘, 신경생물학적 신호 전달, 그리고 행동적 결과를 규명하는 연구
+                곤충의 미각 및 후각 수용체의 분자 메커니즘을 규명하고, 다양한 환경 신호(맛, 냄새, 온도 등)에 대한 감각 신경의 반응 원리와 행동적 조절을 연구합니다.
             </p>
             
             <h3>주요 연구 내용</h3>
             <ul>
-                <li>Apis mellifera(양봉)와 Apis cerana(토종벌)의 설탕, 염도, 쓴맛 감지</li>
-                <li>맛 수용체 유전자의 분자 특성화 및 발현 프로파일링</li>
-                <li>전기생리 기록을 통한 미각 신경의 반응 특성 분석</li>
-                <li>Post-ingestional malaise 및 학습 기반 미각 혐오 연구</li>
-                <li>혈액 섭식 곤충(모기)의 숙주 인식 메커니즘</li>
+                <li>맛(Sugar, Salt, Bitter) 및 냄새(Floral, Pheromone, Host) 수용체 특성화</li>
+                <li>양봉(A. mellifera)과 토종벌(A. cerana)의 감각 시스템 비교 연구</li>
+                <li>전기생리 기록을 통한 감각 신경의 반응 특성 및 코드 분석</li>
+                <li>열 스트레스 및 생물학적 연령에 따른 감각 및 행동 변화</li>
+                <li>혈액 섭식 곤충(모기)의 숙주 인식 및 감각 경로 규명</li>
             </ul>
 
             <div class="key-papers">
                 <p><strong>주요 논문:</strong></p>
-                <p>• <span class="paper-link">Olfactory responses in a gustatory organ of the malaria vector mosquito Anopheles gambiae</span> (PNAS, 2006)</p>
-                <p>• <span class="paper-link">Taste Perception in Honey Bees</span> (Chemical Senses, 2011)</p>
-                <p>• <span class="paper-link">The tarsal taste of honey bees: behavioral and electrophysiological analyses</span> (Frontiers in Behavioral Neuroscience, 2014)</p>
-            </div>
+                <p>• <a href="https://doi.org/10.1073/pnas.0601107103" target="_blank" class="paper-link">Olfactory responses in a gustatory organ of the malaria vector mosquito Anopheles gambiae <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (PNAS, 2006)</p>
+                <p>• <a href="https://doi.org/10.1016/j.jinsphys.2026.104945" target="_blank" class="paper-link">Chronic heat stress disrupts foraging motivation in honey bees <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (J. Insect Physiol., 2026)</p>
+                <p>• <a href="https://doi.org/10.1016/j.aspen.2014.10.011" target="_blank" class="paper-link">Functional characterization of sugar receptors in the western honeybee, Apis mellifera <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (J. Asia-Pac. Entomol., 2015)</p>
+                <p>• <a href="https://doi.org/10.1016/j.aspen.2013.11.006" target="_blank" class="paper-link">Structural and functional differences in the antennal olfactory system of honey bees <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (J. Asia-Pac. Entomol., 2014)</p>
         </div>
 
         <!-- 2. Disease Vector Control -->
-        <div class="research-area">
+        <div class="research-area" id="vector">
             <h2><i class="fas fa-virus"></i> Disease Vector Control</h2>
             <p class="description">
                 곤충 매개 감염병의 벡터(모기, 바퀴벌레 등)의 혈액 섭식 행동, 숙주 탐색 메커니즘 규명 및 효과적인 제어 전략 개발
@@ -174,38 +76,15 @@
 
             <div class="key-papers">
                 <p><strong>주요 논문:</strong></p>
-                <p>• <span class="paper-link">A novel olfactory pathway is essential for fast and efficient blood-feeding in mosquitoes</span> (Scientific Reports, 2015)</p>
-                <p>• <span class="paper-link">Bitter-sensitive gustatory receptor neuron responds to chemically diverse insect repellents</span> (Naturwissenschaften, 2016)</p>
-                <p>• <span class="paper-link">Electrophysiological Responses of Gustatory Receptor Neurons on the Labella</span> (Journal of Medical Entomology, 2016)</p>
+                <p>• <a href="https://doi.org/10.1016/j.ibmb.2023.104069" target="_blank" class="paper-link">A single mutation in the mosquito olfactory receptor 8 causes loss of function to 1-octen-3-ol <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (IBMB, 2024)</p>
+                <p>• <a href="https://doi.org/10.1038/s41598-023-35641-3" target="_blank" class="paper-link">Microbiome diversity and epidemiology in domestic species of malaria-mediated mosquitoes <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (Scientific Reports, 2023)</p>
+                <p>• <a href="https://doi.org/10.1038/srep13444" target="_blank" class="paper-link">A novel olfactory pathway is essential for fast and efficient blood-feeding in mosquitoes <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (Scientific Reports, 2015)</p>
             </div>
         </div>
 
-        <!-- 3. Insect Olfaction -->
-        <div class="research-area">
-            <h2><i class="fas fa-nose"></i> Insect Olfaction</h2>
-            <p class="description">
-                곤충의 후각 시스템 구조, 냄새 수용체 발현, 신경생물학적 신호 전달 메커니즘 규명
-            </p>
-            
-            <h3>주요 연구 내용</h3>
-            <ul>
-                <li>안테나 감각모(sensilla) 구조의 주사전자현미경(SEM) 분석</li>
-                <li>냄새 수용체(Odorant Receptors) 유전자의 분자 특성화</li>
-                <li>두 종의 양봉(A. mellifera vs A. cerana) 후각 시스템 비교</li>
-                <li>꽃 향기, 페로몬, 혈액 냄새 감지</li>
-                <li>바퀴벌레 등 다른 곤충 종의 후각 신경 조절</li>
-            </ul>
-
-            <div class="key-papers">
-                <p><strong>주요 논문:</strong></p>
-                <p>• <span class="paper-link">Structural and functional differences in the antennal olfactory system of Apis mellifera and Apis cerana</span> (Journal of Asia-pacific Entomology, 2014)</p>
-                <p>• <span class="paper-link">Neuromodulation of Olfactory Sensitivity in the Peripheral Olfactory Organs</span> (PLOS ONE, 2013)</p>
-            </div>
-        </div>
-
-        <!-- 4. Comparative Genomics -->
-        <div class="research-area">
-            <h2><i class="fas fa-dna"></i> Comparative Genomics</h2>
+        <!-- 3. Genomics -->
+        <div class="research-area" id="genomics">
+            <h2><i class="fas fa-dna"></i> Genomics</h2>
             <p class="description">
                 다양한 곤충 종(꿀벌, 모기, 바퀴벌레 등)의 게놈 서열 비교를 통해 종 특이적 진화 특성 및 적응 메커니즘 규명
             </p>
@@ -221,13 +100,14 @@
 
             <div class="key-papers">
                 <p><strong>주요 논문:</strong></p>
-                <p>• <span class="paper-link">Uncovering the novel characteristics of Asian honey bee, Apis cerana, by whole genome sequencing</span> (BMC Genomics, 2015) - Citations: 1183</p>
-                <p>• <span class="paper-link">Genome-wide characterization of long intergenic non-coding RNAs (lincRNAs)</span> (BMC Genomics, 2015)</p>
+                <p>• <a href="https://doi.org/10.1038/s41598-025-12338-3" target="_blank" class="paper-link">Chromosome level de novo hybrid assembly of Asian honeybee, Apis cerana Koreana <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (Scientific Reports, 2025)</p>
+                <p>• <a href="https://doi.org/10.1186/1471-2164-16-1" target="_blank" class="paper-link">Uncovering the novel characteristics of Asian honey bee by whole genome sequencing <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (BMC Genomics, 2015)</p>
+                <p>• <a href="https://doi.org/10.3390/biom14010019" target="_blank" class="paper-link">Monitoring immune modulation in season population: honey bee health markers <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (Biomolecules, 2024)</p>
             </div>
         </div>
 
-        <!-- 5. Biosensors & AI Applications -->
-        <div class="research-area">
+        <!-- 4. Biosensors & AI Applications -->
+        <div class="research-area" id="biosensors">
             <h2><i class="fas fa-microchip"></i> Biosensors & AI Applications</h2>
             <p class="description">
                 곤충 감각 수용체를 활용한 바이오센서 개발 및 AI 기술 적용을 통한 식품 품질 검사, 환경 모니터링 등 실용적 응용
@@ -245,7 +125,9 @@
 
             <div class="key-papers">
                 <p><strong>주요 논문:</strong></p>
-                <p>• <span class="paper-link">Discrimination of umami tastants using floating electrode-based bioelectronic tongue</span> (ACS Nano, 2015) - Citations: 52</p>
+                <p>• <a href="https://doi.org/10.1021/acssensors.2c01254" target="_blank" class="paper-link">Bioelectronic tongues mimicking insect taste systems for real-time discrimination <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (ACS Sensors, 2022)</p>
+                <p>• <a href="https://doi.org/10.1021/acsnano.5b03031" target="_blank" class="paper-link">Discrimination of umami tastants using floating electrode-based bioelectronic tongue <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (ACS Nano, 2015)</p>
+                <p>• <a href="https://doi.org/10.1038/s41598-020-57875-1" target="_blank" class="paper-link">Classification of vector mosquitoes using deep convolutional neural networks <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a> (Scientific Reports, 2020)</p>
             </div>
         </div>
 
@@ -264,5 +146,6 @@
         <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
         <p>&copy; 2026 CRCIV. All rights reserved.</p>
     </footer>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

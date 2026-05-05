@@ -4,92 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications | CRCIV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Publications of CRCIV - 곤충 미각, 후각, 벡터 제어 등 주요 연구 논문 및 출판물 목록.">
+    <meta name="keywords" content="Publications, CRCIV, Research Papers, Hyung Wook Kwon, 권형욱, 논문">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        :root {
-            --primary-color: #1a2a3a;
-            --accent-color: #007bff;
-            --bg-light: #f8f9fa;
-            --text-main: #333;
-            --text-muted: #6c757d;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', 'Noto Sans KR', sans-serif; color: var(--text-main); line-height: 1.6; }
-        a { text-decoration: none; color: inherit; transition: color 0.3s; }
-        ul { list-style: none; }
-
-        header {
-            position: fixed; width: 100%; top: 0; left: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
-        .logo span { color: var(--accent-color); }
-        nav ul { display: flex; gap: 2rem; }
-        nav a { font-weight: 500; font-size: 0.95rem; }
-        nav a:hover { color: var(--accent-color); }
-        
-        main { margin-top: 80px; padding: 3rem 10%; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-        .subtitle { color: var(--text-muted); margin-bottom: 2rem; }
-        
-        .filters { margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid #ddd;
-            background: white;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        .filter-btn:hover,
-        .filter-btn.active { background: var(--accent-color); color: white; border-color: var(--accent-color); }
-        
-        .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
-        .pub-item {
-            background: white;
-            padding: 1.5rem;
-            border-left: 4px solid var(--accent-color);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-            border-radius: 0 8px 8px 0;
-            transition: transform 0.3s;
-        }
-        .pub-item:hover { transform: translateX(10px); }
-        .pub-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-        .pub-item .authors { font-size: 0.95rem; color: #555; margin-bottom: 0.3rem; }
-        .pub-item .venue { font-size: 0.9rem; font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem; }
-        .pub-item .year { display: inline-block; background: #e9ecef; color: #495057; font-size: 0.8rem; padding: 3px 8px; border-radius: 12px; margin-right: 5px; }
-        .pub-item .citation { display: inline-block; background: #cfe2ff; color: #084298; font-size: 0.8rem; padding: 3px 8px; border-radius: 12px; }
-        .tags { margin-top: 0.8rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tag {
+        .badge {
             display: inline-block;
-            background: #f0f0f0;
-            color: #555;
+            padding: 2px 8px;
+            border-radius: 4px;
             font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 12px;
+            font-weight: 600;
+            margin-right: 5px;
+            text-transform: uppercase;
         }
-        
-        .pub-link { margin-top: 0.5rem; }
-        .pub-link a { color: var(--accent-color); font-size: 0.9rem; }
-        .pub-link a:hover { text-decoration: underline; }
-        
-        footer {
-            background: var(--primary-color);
-            color: #ccc;
-            padding: 3rem 10%;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        footer a { color: white; }
-        
-        .stats { background: var(--bg-light); padding: 2rem; border-radius: 10px; margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; text-align: center; }
-        .stat-item h3 { font-size: 2rem; color: var(--accent-color); font-weight: 700; }
-        .stat-item p { color: var(--text-muted); font-size: 0.9rem; }
+        .badge-q1 { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+        .badge-high-cited { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .badge-impact { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
     </style>
 </head>
 <body>
@@ -98,8 +29,10 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#research">Research</a></li>
-                <li><a href="publications.html">Publications</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="publications.html" class="active">Publications</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -109,226 +42,445 @@
     <main>
         <h1>Publications</h1>
         <p class="subtitle">CRCIV의 연구 논문 및 저널 아티클</p>
-        
+
         <div class="stats">
             <div class="stat-item">
-                <h3>50+</h3>
+                <h3>44</h3>
                 <p>Total Publications</p>
             </div>
             <div class="stat-item">
-                <h3>4,000+</h3>
+                <h3>4,287</h3>
                 <p>Total Citations</p>
             </div>
             <div class="stat-item">
-                <h3>15+</h3>
+                <h3>21</h3>
                 <p>Research Years</p>
             </div>
         </div>
 
-        <div class="filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Taste Receptors</button>
-            <button class="filter-btn">Vector Control</button>
-            <button class="filter-btn">Olfaction</button>
-            <button class="filter-btn">Genomics</button>
-            <button class="filter-btn">Biosensors</button>
+        <!-- Category Filters -->
+        <div class="filters" id="category-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Taste Receptors">Taste Receptors</button>
+            <button class="filter-btn" data-filter="Vector Control">Vector Control</button>
+            <button class="filter-btn" data-filter="Olfaction">Olfaction</button>
+            <button class="filter-btn" data-filter="Genomics">Genomics</button>
+            <button class="filter-btn" data-filter="Biosensors">Biosensors</button>
         </div>
 
-        <div class="pub-list">
-            <!-- Taste Receptors -->
-            <div class="pub-item">
-                <h3>Identification and characterization of sugar receptors in the western honey bee, Apis mellifera</h3>
-                <div class="authors">박건웅 (Kun Woong Park)</div>
-                <div class="venue">Dissertation, 2014</div>
+        <div class="pub-list" id="pub-list">
+            <div class="pub-item" data-category="Vector Control" data-year="2026">
+                <h3><a href="https://doi.org/10.1128/spectrum.02587-25" target="_blank" rel="noopener noreferrer">Spatiotemporal variation in the microbiome of Aedes vexans from Korea reveals regional markers linked to environmental risk factors <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Maigoro, A. Y., Lee, J. H., Heo, D.-R., et al.</div>
+                <div class="venue">Microbiology Spectrum, 2026</div>
                 <div class="tags">
-                    <span class="year">2014</span>
-                    <span class="tag">Taste Receptors</span>
-                    <span class="tag">Apis mellifera</span>
+                    <span class="year">2026</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Biosensors" data-year="2026">
+                <div style="margin-bottom: 8px;">
+                    <span class="badge badge-q1">Q1 Journal</span>
+                    <span class="badge badge-impact">IF 10.3</span>
+                </div>
+                <h3><a href="#" target="_blank" rel="noopener noreferrer">Direct diagnosis of chalkbrood disease by smelling infected honey bee larvae via bioelectronic noses <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Choi, Y., Lee, D., Lee, S., et al.</div>
+                <div class="venue">ACS Applied Materials & Interfaces, 2026</div>
+                <div class="tags">
+                    <span class="year">2026</span>
+                    <span class="tag">Biosensors</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2026">
+                <h3><a href="https://doi.org/10.1016/j.jinsphys.2026.104945" target="_blank" rel="noopener noreferrer">Chronic heat stress disrupts foraging motivation in honey bees <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Frunze, O., Kim, H., Woo, S. O., et al.</div>
+                <div class="venue">Journal of Insect Physiology, 2026</div>
+                <div class="tags">
+                    <span class="year">2026</span>
+                    <span class="tag">Olfaction</span>
                 </div>
             </div>
 
-            <div class="pub-item">
-                <h3>The tarsal taste of honey bees: behavioral and electrophysiological analyses.</h3>
-                <div class="authors">Maria Gabriela de Brito Sanchez, Esther Lorenzo, ..., Martin Giurfa</div>
-                <div class="venue">Frontiers in Behavioral Neuroscience, 2014</div>
+            <div class="pub-item" data-category="Genomics" data-year="2025">
+                <h3><a href="https://doi.org/10.1038/s41598-025-12338-3" target="_blank" rel="noopener noreferrer">Chromosome level de novo hybrid assembly of Asian honeybee, Apis cerana Koreana <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lee, J.-H., Kim, B.-J., Han, G., et al.</div>
+                <div class="venue">Scientific Reports, 2025</div>
                 <div class="tags">
-                    <span class="year">2014</span>
-                    <span class="tag">Taste Receptors</span>
-                    <span class="tag">Electrophysiology</span>
+                    <span class="year">2025</span>
+                    <span class="tag">Genomics</span>
                 </div>
             </div>
-
-            <div class="pub-item">
-                <h3>Taste Perception in Honey Bees</h3>
-                <div class="authors">Maria Gabriela de Brito Sanchez</div>
-                <div class="venue">Chemical Senses, 2011</div>
+            <div class="pub-item" data-category="Olfaction" data-year="2025">
+                <h3><a href="https://doi.org/10.1016/j.jinsphys.2025.104857" target="_blank" rel="noopener noreferrer">Modeling biological age to assess maturation and ageing (Apis mellifera) <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Yun, Y., Frunze, O., Kim, N., & Kwon, H.-W.</div>
+                <div class="venue">Journal of Insect Physiology, 2025</div>
                 <div class="tags">
-                    <span class="year">2011</span>
-                    <span class="citation">Citations: 105</span>
+                    <span class="year">2025</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2024">
+                <h3><a href="https://doi.org/10.1016/j.ibmb.2023.104069" target="_blank" rel="noopener noreferrer">A single mutation in the mosquito (Aedes aegypti) olfactory receptor 8 causes loss of function to 1-octen-3-ol <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Frunze, O., Lee, D., Lee, S., & Kwon, H. W.</div>
+                <div class="venue">Insect Biochemistry and Molecular Biology, 2024</div>
+                <div class="tags">
+                    <span class="year">2024</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2024">
+                <h3><a href="https://doi.org/10.3390/insects15030201" target="_blank" rel="noopener noreferrer">Geographical characteristics of Culex tritaeniorhynchus and Culex orientalis microbiomes in Korea <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lee, J.-H., Lee, H.-I., & Kwon, H.-W.</div>
+                <div class="venue">Insects, 2024</div>
+                <div class="tags">
+                    <span class="year">2024</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2024">
+                <h3><a href="https://doi.org/10.1371/journal.pone.0315062" target="_blank" rel="noopener noreferrer">The effect of seasonal temperatures on the physiology of the overwintered honey bee <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Frunze, O., Yun, Y., Kim, H., et al.</div>
+                <div class="venue">PLOS ONE, 2024</div>
+                <div class="tags">
+                    <span class="year">2024</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2024">
+                <h3><a href="https://doi.org/10.3390/biom14010019" target="_blank" rel="noopener noreferrer">Monitoring immune modulation in season population: Identifying effects and markers related to honey bee health <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Frunze, O., Kim, H., Kim, B.-J., et al.</div>
+                <div class="venue">Biomolecules, 2024</div>
+                <div class="tags">
+                    <span class="year">2024</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2023">
+                <h3><a href="https://doi.org/10.1038/s41598-023-35641-3" target="_blank" rel="noopener noreferrer">The relationships between microbiome diversity and epidemiology in domestic species of malaria-mediated mosquitoes of Korea <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lee, J. H., Kim, H.-W., Mustafa, B., et al.</div>
+                <div class="venue">Scientific Reports, 2023</div>
+                <div class="tags">
+                    <span class="year">2023</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Biosensors" data-year="2022">
+                <div style="margin-bottom: 8px;">
+                    <span class="badge badge-q1">Q1 Journal</span>
+                    <span class="badge badge-impact">IF 9.2</span>
+                </div>
+                <h3><a href="https://doi.org/10.1021/acssensors.2c01254" target="_blank" rel="noopener noreferrer">Bioelectronic tongues mimicking insect taste systems for real-time discrimination between sweeteners <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Choi, Y., Lee, S., Lee, S., et al.</div>
+                <div class="venue">ACS Sensors, 2022</div>
+                <div class="tags">
+                    <span class="year">2022</span>
+                    <span class="tag">Biosensors</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2021">
+                <h3><a href="https://doi.org/10.1016/j.aspen.2020.12.016" target="_blank" rel="noopener noreferrer">Behavioral and molecular responses of Aedes aegypti to ultrasound <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kim, D.-I., Ilyasov, R., Yunusbaeva, U., et al.</div>
+                <div class="venue">Journal of Asia-Pacific Entomology, 2021</div>
+                <div class="tags">
+                    <span class="year">2021</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2021">
+                <h3><a href="https://doi.org/10.31467/uluaricilik.883775" target="_blank" rel="noopener noreferrer">Effect of miticides amitraz and fluvalinate on reproduction and productivity of honey bee Apis mellifera <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Ilyasov, R. A., Lim, S., Lee, M. L., et al.</div>
+                <div class="venue">Uludag Bee Journal, 2021</div>
+                <div class="tags">
+                    <span class="year">2021</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Biosensors" data-year="2020">
+                <div style="margin-bottom: 8px;">
+                    <span class="badge badge-q1">Q1 Journal</span>
+                </div>
+                <h3><a href="https://doi.org/10.1038/s41598-020-57875-1" target="_blank" rel="noopener noreferrer">Classification and morphological analysis of vector mosquitoes using deep convolutional neural networks <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Park, J., Kim, D. I., Choi, B., et al.</div>
+                <div class="venue">Scientific Reports, 2020</div>
+                <div class="tags">
+                    <span class="year">2020</span>
+                    <span class="tag">Biosensors</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Biosensors" data-year="2020">
+                <h3><a href="https://doi.org/10.1016/j.jinsphys.2020.104040" target="_blank" rel="noopener noreferrer">Volatile disease markers of American foulbrood-infected larvae in Apis mellifera <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lee, S., Lim, S., Choi, Y.-S., et al.</div>
+                <div class="venue">Journal of Insect Physiology, 2020</div>
+                <div class="tags">
+                    <span class="year">2020</span>
+                    <span class="tag">Biosensors</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2019">
+                <h3><a href="https://doi.org/10.1016/j.aspen.2018.12.024" target="_blank" rel="noopener noreferrer">Spatial releasing properties and mosquito repellency of cellulose-based beads containing essential oils and vanillin <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kim, D.-I., Kim, S.-I., Jung, J. W., et al.</div>
+                <div class="venue">Journal of Asia-Pacific Entomology, 2019</div>
+                <div class="tags">
+                    <span class="year">2019</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2019">
+                <h3><a href="https://doi.org/10.1080/00218839.2019.1622320" target="_blank" rel="noopener noreferrer">Comparative analysis of mitochondrial genomes of the honey bee subspecies A. m. caucasica and A. m. carpathica <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Ilyasov, R., Nikolenko, A., Tuktarov, V., et al.</div>
+                <div class="venue">Journal of Apicultural Research, 2019</div>
+                <div class="tags">
+                    <span class="year">2019</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2019">
+                <h3><a href="https://doi.org/10.2478/JAS-2019-0024" target="_blank" rel="noopener noreferrer">Phylogenetic relationships of Russian Far-East Apis cerana with other North Asian populations <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Ilyasov, R. A., Youn, H. G., Lee, M.-L., et al.</div>
+                <div class="venue">Journal of Apicultural Science, 2019</div>
+                <div class="tags">
+                    <span class="year">2019</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Taste Receptors" data-year="2019">
+                <h3><a href="#" target="_blank" rel="noopener noreferrer">Characterization and its implication of a novel taste receptor detecting nutrients in the honey bee, Apis mellifera <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lim, S., Jung, J., Yunusbaev, U., et al.</div>
+                <div class="venue">Kwon Lab Files, 2019</div>
+                <div class="tags">
+                    <span class="year">2019</span>
                     <span class="tag">Taste Receptors</span>
                 </div>
             </div>
-
-            <!-- Vector Control -->
-            <div class="pub-item">
-                <h3>A novel olfactory pathway is essential for fast and efficient blood-feeding in mosquitoes</h3>
-                <div class="authors">Je Won Jung, Seung-Jae Baeck, Haribalan Perumalsamy, Bill S. Hansson, Young-Joon Ahn, <strong>Hyung Wook Kwon*</strong></div>
+            <div class="pub-item" data-category="Genomics" data-year="2018">
+                <h3><a href="https://doi.org/10.2478/JAS-2018-0018" target="_blank" rel="noopener noreferrer">Phylogenetic uniqueness of honeybee Apis cerana from the Korean Peninsula inferred from mitochondrial, nuclear, and morphological data <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Ilyasov, R. A., Park, J., Takahashi, J., & Kwon, H. W.</div>
+                <div class="venue">Journal of Apicultural Science, 2018</div>
+                <div class="tags">
+                    <span class="year">2018</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2018">
+                <h3><a href="#" target="_blank" rel="noopener noreferrer">The effects of high fat diet-induced stress on olfactory sensitivity, behaviors, and transcriptional profiling in Drosophila melanogaster <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Jung, J., Kim, D.-I., Han, G.-Y., & Kwon, H. W.</div>
+                <div class="venue">International Journal of Molecular Sciences, 2018</div>
+                <div class="tags">
+                    <span class="year">2018</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2016">
+                <h3><a href="https://doi.org/10.1016/j.aspen.2016.06.009" target="_blank" rel="noopener noreferrer">Identification and expression patterns of two TRPV channel genes in antennae and Johnston's organ of Aedes aegypti <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Na, Y.-E., Jung, J. W., & Kwon, H. W.</div>
+                <div class="venue">Journal of Asia-Pacific Entomology, 2016</div>
+                <div class="tags">
+                    <span class="year">2016</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2015">
+                <h3><a href="https://doi.org/10.1038/srep13444" target="_blank" rel="noopener noreferrer">A novel olfactory pathway is essential for fast and efficient blood-feeding in mosquitoes <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Jung, J. W., Baeck, S.-J., Perumalsamy, H., et al.</div>
                 <div class="venue">Scientific Reports, 2015</div>
                 <div class="tags">
                     <span class="year">2015</span>
                     <span class="tag">Vector Control</span>
-                    <span class="tag">Mosquito</span>
-                    <span class="tag">Olfaction</span>
                 </div>
             </div>
-
-            <div class="pub-item">
-                <h3>Bitter-sensitive gustatory receptor neuron responds to chemically diverse insect repellents in the common malaria mosquito Anopheles quadrimaculatus</h3>
-                <div class="authors">Jackson T. Sparks, Joseph C. Dickens</div>
-                <div class="venue">Naturwissenschaften, 2016</div>
+            <div class="pub-item" data-category="Genomics" data-year="2015">
+                <div style="margin-bottom: 8px;">
+                    <span class="badge badge-high-cited">Highly Cited (1180+)</span>
+                    <span class="badge badge-q1">Q1 Journal</span>
+                </div>
+                <h3><a href="https://doi.org/10.1186/1471-2164-16-1" target="_blank" rel="noopener noreferrer">Uncovering the novel characteristics of Asian honey bee, Apis cerana, by whole genome sequencing <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Park, D., Jung, J. W., Choi, B.-S., et al.</div>
+                <div class="venue">BMC Genomics, 2015</div>
                 <div class="tags">
-                    <span class="year">2016</span>
-                    <span class="citation">Partially Relevant</span>
-                    <span class="tag">Vector Control</span>
+                    <span class="year">2015</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2015">
+                <h3><a href="https://doi.org/10.1186/s12864-015-1868-7" target="_blank" rel="noopener noreferrer">Genome-wide characterization of long intergenic non-coding RNAs (lincRNAs) provides new insight into viral diseases in honey bees <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Jayakodi, M., Jung, J. W., Park, D., et al.</div>
+                <div class="venue">BMC Genomics, 2015</div>
+                <div class="tags">
+                    <span class="year">2015</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2015">
+                <h3><a href="https://doi.org/10.1007/s13592-015-0381-y" target="_blank" rel="noopener noreferrer">Mitochondrial DNA variations in Korean Apis cerana (Hymenoptera: Apidae) and development of another potential marker <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kwon Lab</div>
+                <div class="venue">Apidologie, 2015</div>
+                <div class="tags">
+                    <span class="year">2015</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Taste Receptors" data-year="2015">
+                <h3><a href="https://doi.org/10.1016/j.aspen.2014.10.011" target="_blank" rel="noopener noreferrer">Functional characterization of sugar receptors in the western honeybee, Apis mellifera <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Jung, J. W., Park, K. W., Ahn, Y.-J., & Kwon, H. W.</div>
+                <div class="venue">Journal of Asia-Pacific Entomology, 2015</div>
+                <div class="tags">
+                    <span class="year">2015</span>
                     <span class="tag">Taste Receptors</span>
                 </div>
             </div>
-
-            <div class="pub-item">
-                <h3>Electrophysiological Responses of Gustatory Receptor Neurons on the Labella of the Common Malaria Mosquito, Anopheles quadrimaculatus</h3>
-                <div class="authors">Jackson T. Sparks, Joseph C. Dickens</div>
-                <div class="venue">Journal of Medical Entomology, 2016</div>
-                <div class="tags">
-                    <span class="year">2016</span>
-                    <span class="tag">Vector Control</span>
-                    <span class="tag">Electrophysiology</span>
-                </div>
-            </div>
-
-            <!-- Genomics -->
-            <div class="pub-item">
-                <h3>Uncovering the novel characteristics of Asian honey bee, Apis cerana, by whole genome sequencing</h3>
-                <div class="authors">Doori Park, Je Won Jung, Beom-Soon Choi, Murukarthick Jayakodi, ..., <strong>Hyung Wook Kwon*</strong></div>
-                <div class="venue">BMC Genomics, 2015</div>
+            <div class="pub-item" data-category="Biosensors" data-year="2015">
+                <h3><a href="#" target="_blank" rel="noopener noreferrer">SEM observations of Korean haplotype Varroa destructor collected from Apis mellifera colonies <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Thapa, R., Wongsiri, S., Lee, M. L., et al.</div>
+                <div class="venue">Journal of Apiculture, 2015</div>
                 <div class="tags">
                     <span class="year">2015</span>
-                    <span class="citation">Citations: 1183</span>
-                    <span class="tag">Genomics</span>
-                    <span class="tag">Apis cerana</span>
-                    <span class="tag">Comparative Genomics</span>
+                    <span class="tag">Biosensors</span>
                 </div>
             </div>
-
-            <div class="pub-item">
-                <h3>Genome-wide characterization of long intergenic non-coding RNAs (lincRNAs) provides new insight into viral diseases in honey bees Apis cerana and Apis mellifera</h3>
-                <div class="authors">Murukarthick Jayakodi, Je Won Jung, Doori Park, Young-Joon Ahn, ..., <strong>Hyung Wook Kwon*</strong></div>
-                <div class="venue">BMC Genomics, 2015</div>
-                <div class="tags">
-                    <span class="year">2015</span>
-                    <span class="citation">Citations: 93</span>
-                    <span class="tag">Genomics</span>
-                    <span class="tag">ncRNA</span>
+            <div class="pub-item" data-category="Biosensors" data-year="2015">
+                <div style="margin-bottom: 8px;">
+                    <span class="badge badge-q1">Q1 Journal</span>
+                    <span class="badge badge-impact">IF 15.8</span>
                 </div>
-            </div>
-
-            <!-- Biosensors & AI -->
-            <div class="pub-item">
-                <h3>Discrimination of umami tastants using floating electrode-based bioelectronic tongue mimicking insect taste systems</h3>
-                <div class="authors">Minju Lee, Je Won Jung, Daesan Kim, Young-Joon Ahn, Seunghun Hong, <strong>Hyung Wook Kwon*</strong></div>
+                <h3><a href="https://doi.org/10.1021/acsnano.5b03031" target="_blank" rel="noopener noreferrer">Discrimination of umami tastants using floating electrode-based bioelectronic tongue mimicking insect taste systems <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lee, M., Jung, J. W., Kim, D., et al.</div>
                 <div class="venue">ACS Nano, 2015</div>
                 <div class="tags">
                     <span class="year">2015</span>
-                    <span class="citation">Citations: 52</span>
                     <span class="tag">Biosensors</span>
-                    <span class="tag">AI Application</span>
-                    <span class="tag">Taste Receptors</span>
                 </div>
             </div>
-
-            <!-- Classic papers -->
-            <div class="pub-item">
-                <h3>Olfactory responses in a gustatory organ of the malaria vector mosquito Anopheles gambiae</h3>
-                <div class="authors"><strong>Hyung Wook Kwon</strong>, Tan Lu, Michael Rützler, Laurence J. Zwiebel</div>
+            <div class="pub-item" data-category="Olfaction" data-year="2015">
+                <h3><a href="https://doi.org/10.1038/srep16127" target="_blank" rel="noopener noreferrer">Effects and possible mechanisms of action of acacetin on Alzheimer's disease Drosophila models <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Wang, X., Perumalsamy, H., Kwon, H. W., et al.</div>
+                <div class="venue">Scientific Reports, 2015</div>
+                <div class="tags">
+                    <span class="year">2015</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2014">
+                <h3><a href="#" target="_blank" rel="noopener noreferrer">Structural and functional differences in the antennal olfactory system of worker honey bees of Apis mellifera and Apis cerana <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Jung, J. W., Park, K. W., Oh, H.-W., & Kwon, H. W.</div>
+                <div class="venue">Journal of Asia-Pacific Entomology, 2014</div>
+                <div class="tags">
+                    <span class="year">2014</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2014">
+                <h3><a href="https://doi.org/10.1016/j.peptides.2014.01.026" target="_blank" rel="noopener noreferrer">Functional characterization of naturally occurring melittin peptide isoforms in two honey bee species <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Park, D., Jung, J. W., Lee, M. O., et al.</div>
+                <div class="venue">Peptides, 2014</div>
+                <div class="tags">
+                    <span class="year">2014</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2014">
+                <h3><a href="https://doi.org/10.1186/1472-6882-14-88" target="_blank" rel="noopener noreferrer">Effects of curcuminoids on BACE-1 inhibitory activity and lifespan of Alzheimer's disease Drosophila models <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Wang, X., Kim, J.-R., Lee, S.-B., et al.</div>
+                <div class="venue">BMC Complementary and Alternative Medicine, 2014</div>
+                <div class="tags">
+                    <span class="year">2014</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2013">
+                <h3><a href="https://doi.org/10.1371/journal.pone.0080226" target="_blank" rel="noopener noreferrer">Novel histopathological and molecular effects of natural compound pellitorine on larval midgut epithelium and anal gills of Aedes aegypti <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Perumalsamy, H., Kim, J.-R., Oh, S. M., et al.</div>
+                <div class="venue">PLoS ONE, 2013</div>
+                <div class="tags">
+                    <span class="year">2013</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2013">
+                <h3><a href="https://doi.org/10.1016/j.toxicon.2013.09.017" target="_blank" rel="noopener noreferrer">Antimicrobial activity of a honeybee (Apis cerana) venom Kazal-type serine protease inhibitor <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kim, B. Y., Lee, K. S., Zou, F. M., et al.</div>
+                <div class="venue">Toxicon, 2013</div>
+                <div class="tags">
+                    <span class="year">2013</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2012">
+                <h3><a href="https://doi.org/10.1603/ME11127" target="_blank" rel="noopener noreferrer">Toxicity and synergic repellency of plant essential oil mixtures with vanillin against Aedes aegypti <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kim, S.-I., Yoon, J.-S., Baeck, S.-J., et al.</div>
+                <div class="venue">Journal of Medical Entomology, 2012</div>
+                <div class="tags">
+                    <span class="year">2012</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2012">
+                <h3><a href="https://doi.org/10.1016/j.bbrc.2012.11.056" target="_blank" rel="noopener noreferrer">Anti-elastolytic activity of a honeybee (Apis cerana) chymotrypsin inhibitor <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kim, B. Y., Lee, K. S., Wan, H., et al.</div>
+                <div class="venue">BBRC, 2012</div>
+                <div class="tags">
+                    <span class="year">2012</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Genomics" data-year="2012">
+                <h3><a href="https://doi.org/10.1371/journal.pone.0048838" target="_blank" rel="noopener noreferrer">Molecular and kinetic properties of two acetylcholinesterases from the western honey bee, Apis mellifera <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kim, Y. H., Cha, D. J., Jung, J. W., et al.</div>
+                <div class="venue">PLoS ONE, 2012</div>
+                <div class="tags">
+                    <span class="year">2012</span>
+                    <span class="tag">Genomics</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2012">
+                <h3><a href="https://doi.org/10.1016/j.pestbp.2012.07.006" target="_blank" rel="noopener noreferrer">Neuroprotective properties of phytochemicals against paraquat-induced oxidative stress in Drosophila melanogaster <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Park, J. H., Jung, J. W., Ahn, Y.-J., & Kwon, H. W.</div>
+                <div class="venue">Pesticide Biochemistry and Physiology, 2012</div>
+                <div class="tags">
+                    <span class="year">2012</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Vector Control" data-year="2009">
+                <h3><a href="https://doi.org/10.1111/j.1460-9568.2009.06901.x" target="_blank" rel="noopener noreferrer">Anopheles gambiae TRPA1 is a heat-activated channel expressed in thermosensitive sensilla of female antennae <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Wang, G., Qiu, Y. T., Lu, T., et al.</div>
+                <div class="venue">European Journal of Neuroscience, 2009</div>
+                <div class="tags">
+                    <span class="year">2009</span>
+                    <span class="tag">Vector Control</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2007">
+                <h3><a href="https://doi.org/10.1111/j.1365-2583.2007.00748.x" target="_blank" rel="noopener noreferrer">Molecular characterization of the Aedes aegypti odorant receptor gene family <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Bohbot, J., Pitts, R. J., Kwon, H.-W., et al.</div>
+                <div class="venue">Insect Molecular Biology, 2007</div>
+                <div class="tags">
+                    <span class="year">2007</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2007">
+                <h3><a href="https://doi.org/10.1016/j.cub.2007.07.062" target="_blank" rel="noopener noreferrer">Odor coding in the maxillary palp of the malaria vector mosquito Anopheles gambiae <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Lu, T., Qiu, Y. T., Wang, G., et al.</div>
+                <div class="venue">Current Biology, 2007</div>
+                <div class="tags">
+                    <span class="year">2007</span>
+                    <span class="tag">Olfaction</span>
+                </div>
+            </div>
+            <div class="pub-item" data-category="Olfaction" data-year="2006">
+                <div style="margin-bottom: 8px;">
+                    <span class="badge badge-high-cited">Classic Paper</span>
+                    <span class="badge badge-q1">Q1 / PNAS</span>
+                </div>
+                <h3><a href="https://doi.org/10.1073/pnas.0601107103" target="_blank" rel="noopener noreferrer">Olfactory responses in a gustatory organ of the malaria vector mosquito Anopheles gambiae <i class="fas fa-external-link-alt"></i></a></h3>
+                <div class="authors">Kwon, H.-W., Lu, T., Rützler, M., & Zwiebel, L. J.</div>
                 <div class="venue">Proceedings of the National Academy of Sciences, 2006</div>
                 <div class="tags">
                     <span class="year">2006</span>
-                    <span class="citation">Citations: 194</span>
-                    <span class="tag">Taste Receptors</span>
-                    <span class="tag">Vector Control</span>
                     <span class="tag">Olfaction</span>
                 </div>
             </div>
-
-            <div class="pub-item">
-                <h3>Molecular and Kinetic Properties of Two Acetylcholinesterases from the Western Honey Bee, Apis mellifera</h3>
-                <div class="authors">Young Ho Kim, Deok Jea Cha, Je Won Jung, <strong>Hyung Wook Kwon</strong>, Si Hyeock Lee</div>
-                <div class="venue">PLOS ONE, 2012</div>
-                <div class="tags">
-                    <span class="year">2012</span>
-                    <span class="citation">Citations: 88</span>
-                    <span class="tag">Apis mellifera</span>
-                    <span class="tag">Molecular Biology</span>
-                </div>
-            </div>
-
-            <div class="pub-item">
-                <h3>Neuromodulation of Olfactory Sensitivity in the Peripheral Olfactory Organs of the American Cockroach, Periplaneta americana</h3>
-                <div class="authors">Je Won Jung, Jin-Hee Kim, Rita Pfeiffer, Young-Joon Ahn, Terry L. Page, <strong>Hyung Wook Kwon*</strong></div>
-                <div class="venue">PLOS ONE, 2013</div>
-                <div class="tags">
-                    <span class="year">2013</span>
-                    <span class="citation">Citations: 40</span>
-                    <span class="tag">Olfaction</span>
-                </div>
-            </div>
-
-            <div class="pub-item">
-                <h3>Structural and functional differences in the antennal olfactory system of worker honey bees of Apis mellifera and Apis cerana</h3>
-                <div class="authors">Je Won Jung, Kunwoong Park, Hyun-Woo Oh, <strong>Hyung Wook Kwon*</strong></div>
-                <div class="venue">Journal of Asia-pacific Entomology, 2014</div>
-                <div class="tags">
-                    <span class="year">2014</span>
-                    <span class="citation">Citations: 39</span>
-                    <span class="tag">Olfaction</span>
-                    <span class="tag">Comparative Study</span>
-                </div>
-            </div>
-
-            <div class="pub-item">
-                <h3>Identification and expression patterns of two TRPV channel genes in antennae and Johnston's organ of the dengue and Zika virus vector mosquito, Aedes aegypti</h3>
-                <div class="authors">Young-Eun Na, Je Won Jung, <strong>Hyung Wook Kwon*</strong></div>
-                <div class="venue">Journal of Asia-pacific Entomology, 2016</div>
-                <div class="tags">
-                    <span class="year">2016</span>
-                    <span class="citation">Citations: 10</span>
-                    <span class="tag">Vector Control</span>
-                    <span class="tag">Olfaction</span>
-                </div>
-            </div>
-
-            <div class="pub-item">
-                <h3>Chemosensory proteins of the eastern honeybee, Apis cerana: Identification, tissue distribution and olfactory related functional characterization.</h3>
-                <div class="authors">Hongliang Li, Cui-Xia Ni, Jing Tan, Lin-Ya Zhang, Fuliang Hu</div>
-                <div class="venue">Comparative Biochemistry and Physiology B, 2016</div>
-                <div class="tags">
-                    <span class="year">2016</span>
-                    <span class="tag">Apis cerana</span>
-                    <span class="tag">Olfaction</span>
-                </div>
-            </div>
-
-            <div class="pub-item">
-                <h3>Topological and Functional Characterization of an Insect Gustatory Receptor</h3>
-                <div class="authors">Hui-Jie Zhang, Alisha Anderson, Stephen C. Trowell, Arong Luo, Zhonghuai Xiang, Qingyou Xia</div>
-                <div class="venue">PLOS ONE, 2011</div>
-                <div class="tags">
-                    <span class="year">2011</span>
-                    <span class="citation">Citations: 151</span>
-                    <span class="tag">Taste Receptors</span>
-                    <span class="tag">Molecular Biology</span>
-                </div>
-            </div>
-        </div>
+        </div><!-- end pub-list -->
     </main>
 
     <footer>
@@ -336,5 +488,35 @@
         <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
         <p>&copy; 2026 CRCIV. All rights reserved.</p>
     </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Wait briefly to ensure main.js IntersectionObserver has run
+        setTimeout(() => {
+            let activeCategory = 'all';
+
+            function applyFilters() {
+                document.querySelectorAll('.pub-item').forEach(item => {
+                    const cat = item.dataset.category || '';
+                    const show = activeCategory === 'all' || cat === activeCategory;
+                    
+                    item.style.display = show ? '' : 'none';
+                    if (show) {
+                        item.style.opacity = '1';
+                        item.style.transform = 'none';
+                    }
+                });
+            }
+
+            document.querySelectorAll('#category-filters .filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('#category-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeCategory = btn.dataset.filter;
+                    applyFilters();
+                });
+            });
+        }, 100);
+    </script>
 </body>
 </html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | CRCIV</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Projects of CRCIV - 인천대학교 매개체감염병연구소의 연구 과제 수행 이력 및 현황">
+    <meta name="keywords" content="Projects, 연구과제, CRCIV, 권형욱, 인천대학교">
+    <meta property="og:title" content="Projects | CRCIV">
+    <meta property="og:description" content="인천대학교 매개체감염병연구소의 연구 과제 수행 이력 및 현황">
+    <meta property="og:type" content="website">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">CRC<span>IV</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="projects-hero">
+        <h1>Research Projects</h1>
+        <p class="subtitle">매개체감염병연구소(CRCIV)에서 수행 중이거나 완료된 핵심 연구 과제들입니다.</p>
+    </div>
+
+    <div class="projects-stats-grid">
+        <div class="stat-card">
+            <h3 id="stat-total">0</h3>
+            <p>Total Projects</p>
+        </div>
+        <div class="stat-card">
+            <h3 id="stat-ongoing">0</h3>
+            <p>Active</p>
+        </div>
+        <div class="stat-card">
+            <h3 id="stat-years">0</h3>
+            <p>Total Years</p>
+        </div>
+    </div>
+
+    <div class="projects-container">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">
+                All Projects <span class="count" id="count-all">0</span>
+            </button>
+            <button class="filter-tab" data-filter="ongoing">
+                Active <span class="count" id="count-ongoing">0</span>
+            </button>
+            <button class="filter-tab" data-filter="completed">
+                Completed <span class="count" id="count-completed">0</span>
+            </button>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+            <!-- Cards will be populated via JS -->
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Convergence Research Center for Insect Vector (CRCIV)</strong></p>
+        <p>Incheon National University | Director: Prof. Hyung Wook Kwon</p>
+        <p>&copy; 2026 CRCIV. All rights reserved.</p>
+    </footer>
+
+    <script src="projects_data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let projectsData = [];
+            const grid = document.getElementById('project-grid');
+            const tabs = document.querySelectorAll('.filter-tab');
+            let currentFilter = 'all';
+
+            try {
+                if (typeof projectsDataRaw !== 'undefined') {
+                    projectsData = projectsDataRaw.sort((a, b) => {
+                        const periodA = a.period || '';
+                        const periodB = b.period || '';
+                        const dateA = periodA.includes('~') ? periodA.split('~')[1] : periodA;
+                        const dateB = periodB.includes('~') ? periodB.split('~')[1] : periodB;
+                        return dateB.localeCompare(dateA);
+                    });
+                    
+                    updateUI();
+                }
+            } catch (error) {
+                console.error('Error processing projects data:', error);
+            }
+
+            function isOngoing(period) {
+                if (!period) return false;
+                const parts = period.split('~');
+                if (parts.length < 2) return false;
+                const endDate = new Date(parts[1]);
+                if (isNaN(endDate.getTime())) return false;
+                return endDate >= new Date();
+            }
+
+            function formatCurrency(amount) {
+                const num = parseInt(amount, 10);
+                if (isNaN(num)) return amount;
+                if (num >= 100000000) {
+                    const uk = Math.floor(num / 100000000);
+                    const man = Math.floor((num % 100000000) / 10000);
+                    return uk + '억' + (man > 0 ? ' ' + man + '만' : '') + '원';
+                }
+                return num.toLocaleString() + '원';
+            }
+
+            function updateUI() {
+                const ongoing = projectsData.filter(p => isOngoing(p.period));
+                const completed = projectsData.filter(p => !isOngoing(p.period));
+
+                // Update Stats
+                document.getElementById('stat-total').innerText = projectsData.length;
+                document.getElementById('stat-ongoing').innerText = ongoing.length;
+                
+                // Calculate Total Years (Span from earliest start to latest end)
+                let minDate = new Date();
+                let maxDate = new Date(0);
+                let validDateFound = false;
+
+                projectsData.forEach(p => {
+                    if (p.period && p.period.includes('~')) {
+                        const [startStr, endStr] = p.period.split('~');
+                        const start = new Date(startStr.replace(/\./g, '-'));
+                        const end = new Date(endStr.replace(/\./g, '-'));
+                        if (!isNaN(start) && !isNaN(end)) {
+                            if (start < minDate) minDate = start;
+                            if (end > maxDate) maxDate = end;
+                            validDateFound = true;
+                        }
+                    }
+                });
+
+                let totalYears = 0;
+                if (validDateFound) {
+                    const totalDays = (maxDate - minDate) / (1000 * 60 * 60 * 24);
+                    totalYears = (totalDays / 365).toFixed(1);
+                }
+                document.getElementById('stat-years').innerText = totalYears + 'Y';
+
+                // Update Counts
+                document.getElementById('count-all').innerText = projectsData.length;
+                document.getElementById('count-ongoing').innerText = ongoing.length;
+                document.getElementById('count-completed').innerText = completed.length;
+
+                renderGrid();
+            }
+
+            function renderGrid() {
+                grid.innerHTML = '';
+                const filtered = projectsData.filter(p => {
+                    if (currentFilter === 'all') return true;
+                    return currentFilter === 'ongoing' ? isOngoing(p.period) : !isOngoing(p.period);
+                });
+
+                filtered.forEach(p => {
+                    const ongoing = isOngoing(p.period);
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <div class="status-badge ${ongoing ? 'status-active' : 'status-completed'}">
+                            <i class="fas ${ongoing ? 'fa-sync-alt fa-spin' : 'fa-check-circle'}"></i>
+                            ${ongoing ? 'ACTIVE' : 'COMPLETED'}
+                        </div>
+                        <h3>${p.title}</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-user-tie"></i>
+                                <span class="label">PI</span>
+                                <span>${p.pi}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-university"></i>
+                                <span class="label">Agency</span>
+                                <span>${p.agency}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span class="label">Period</span>
+                                <span>${p.period}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-coins"></i>
+                                <span class="label">Funding</span>
+                                <span>${formatCurrency(p.funding)}</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentFilter = tab.dataset.filter;
+                    renderGrid();
+                });
+            });
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
